@@ -28,7 +28,9 @@ Abrir proyecto desde el directorio: _**configzero-eis/back**_
 
 Ir a la pestaña Maven (en el borde derecho) y presionar _**Reload all maven proyects**_.
 
-Cambiar en las lineas 16 y 17 los datos conforme tengan seteado el server MySQL
+Cambiar en las lineas 16 y 17 los datos conforme tengan seteado el server MySQL.
+
+Ir al archivo src/main/kotlin/org/example/Hello.kt.
 
 Correr el codigo presionando el triangulo verde de la linea 19 y haciendo _**Run...**_.
 
