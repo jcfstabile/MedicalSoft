@@ -1,7 +1,11 @@
 # configzero-eis
 
-1. clonar con 
+1. clonar con
 
+```
+git clone https://github.com/jcfstabile/configzero-eis
+```
+o
 ```
 git clone git@github.com:jcfstabile/configzero-eis.git
 ```
