@@ -2,6 +2,8 @@ package org.example
 
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
+import khttp.get as apiGet
+import khttp.*
 
 
 // https://www.baeldung.com/kotlin/junit-5-kotlin
@@ -10,10 +12,17 @@ import org.junit.jupiter.api.Assertions.*
 class HelloTest {
     @BeforeAll
     fun setup() { // @BeforeAll - executes once before all test methods in this class.
+        MySQLDatabaseExampleKotlin.main(ArrayList<String>(0).toTypedArray())
     }
 
     @BeforeEach
     fun init() { // @BeforeEach - executes before each test method in this class.
+    }
+
+    @Test
+    fun `Api and mysql is up and responding`() {
+        val response = khttp.get(url = "http://localhost:7777/list-of-databases")
+        assertEquals(200,  response.statusCode)
     }
 
     @Test

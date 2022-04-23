@@ -15,11 +15,12 @@ object  MySQLDatabaseExampleKotlin {
 //    internal var connection: Connection? = null
     internal var username = "root"
     internal var password = "root"
+    internal lateinit var app : Javalin;
 
     @JvmStatic fun main(args: Array<String>) {
 
         // start javalin server
-        val app = Javalin.create {
+        app = Javalin.create {
 //            it.addStaticFiles("/home/a/sandbox", Location.CLASSPATH)
             it.enableCorsForAllOrigins()
         }.start(7777)
