@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+import './css/App.css';
 import axios from 'axios';
 
 function App() {
@@ -42,16 +42,13 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <>
-                    <button onClick={getDatabases}>Get Databases</button>
-                    <ul>{
-                        bases ? bases.map(
-                                (base) => <li key={base}>{base}</li>)
-                            : msg ? <p>{msg.toString()}</p> : <p> </p>
-                    }
-                    </ul>
-                </>
-                Learn React
+                <button onClick={getDatabases}>Get Databases</button>
+                <ul>{
+                    bases ? bases.map(
+                            (base) => <li key={base}>{base}</li>)
+                        : msg ? <p>{msg.toString()}</p> : <p> </p>
+                }
+                </ul>
             </header>
         </div>
   );
