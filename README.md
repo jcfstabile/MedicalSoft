@@ -1,13 +1,24 @@
-# configzero-eis
+# MedicalSoft
+
+# Product Backlog: [link](https://trello.com/b/4xbNYNMN/medicalsoft)
+
+# Repositorio del producto: [link](https://github.com/jcfstabile/MedicalSoft)
+
+# Reporte de seguimiento: [link](https://docs.google.com/document/d/1i-_3sovV7Rmn_SwQJ19DVCtSBIEqLHWkhMZj2OwJzPw/edit)
+
+
+
+
+Para comprobar la configuración del repositorio:
 
 1. clonar con
 
 ```
-git clone https://github.com/jcfstabile/configzero-eis
+git clone https://github.com/jcfstabile/MedicalSoft
 ```
 o
 ```
-git clone git@github.com:jcfstabile/configzero-eis.git
+git clone git@github.com:jcfstabile/MedicalSoft.git
 ```
 
 ### front
@@ -24,7 +35,7 @@ Levantar el servidor MySQL.
 
 Arrancar InteliJ IDEA.
 
-Abrir proyecto desde el directorio: _**configzero-eis/back**_
+Abrir proyecto desde el directorio: _**MedicalSoft/back**_
 
 Ir a la pestaña Maven (en el borde derecho) y presionar _**Reload all maven proyects**_.
 
