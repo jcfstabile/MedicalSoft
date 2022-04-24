@@ -8,5 +8,57 @@
     background-image: url("/public/images/vector-de-fondo-medico.jpg");
     height: 100vh;
     width: 100vw;
+    display: flex;
 }
 
+.box {
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    background-color: #a71930;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.box p {
+    color: white;
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+.logo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo img {
+    width: 300px;
+    height: 300px;
+}
+
+.campo {
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.campo img {
+    width: 50px;
+    height: 50px;
+}
+
+.campo input {
+    width: 250px;
+    height: 50px;
+}
