@@ -3,15 +3,9 @@ package ar.edu.unq.eis.medicalsoft
 
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
-import khttp.get as apiGet
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-
-class ApiTest {
-    @BeforeAll
-    fun setUp(){
-        MedicalSolf.start()
-    }
+class ApiTest : SetUpTest() {
 
     @Test
     fun `Login endpoint usuario esta autorizado`(){
@@ -31,4 +25,26 @@ class ApiTest {
         assertEquals(401, response.statusCode)
     }
 
+    @Test
+    fun `Paciente endpoint Agregar` () {
+        val response = khttp.post(
+            url = "http://localhost:7777/api/paciente",
+            json = mapOf( "apellido" to "Perez", "nombre" to  "Jose" , "dni"  to  "12333444" , "telefono" to  "55556666")
+        )
+        assertEquals(201, response.statusCode)
+    }
+
+    @Test
+    fun `Paciente endpoint Agregar ya existente` () {
+        var response = khttp.post(
+            url = "http://localhost:7777/api/paciente",
+            json = mapOf( "apellido" to "Perez", "nombre" to  "Jose" , "dni"  to  "12333444" , "telefono" to  "55556666")
+        )
+        assertEquals(201, response.statusCode)
+       response = khttp.post(
+            url = "http://localhost:7777/api/paciente",
+            json = mapOf( "apellido" to "Perez", "nombre" to  "Jose" , "dni"  to  "12333444" , "telefono" to  "55556666")
+        )
+        assertEquals(422, response.statusCode)
+    }
 }
