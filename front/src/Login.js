@@ -1,6 +1,6 @@
 import './css/Login.css';
 
-const Login = () => {
+const Login = (props) => {
     return (
         <div className='container'>
             <div className="box">
