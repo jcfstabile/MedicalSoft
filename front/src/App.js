@@ -7,12 +7,11 @@ import Login from './Login.js'
 export default class App extends React.Component{
   render(){
     return(
-
-     <Router>
-      <Routes>
-        <Route exact path ='/Login'           component ={Login}/>
-      </Routes>
-     </Router>
+      <Router>
+        <Routes>
+          <Route exact path ='/Login'           component ={Login}/>
+        </Routes>
+      </Router>
     );
     //      <Route exact path ='/agregarpaciente' component ={AgregarPaciente}/>
     //      <Route exact path ='/'                component ={Home}/>
