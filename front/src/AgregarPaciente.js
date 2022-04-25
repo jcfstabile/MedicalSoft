@@ -16,8 +16,9 @@ const AgregarPaciente = ( ) =>{
 
     const registrarPaciente = () =>{
         Api.agregarPaciente (datos)
+        reload();
     }
-    
+
     const navigate = useNavigate();
 
     const reload = () => {
