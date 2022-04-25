@@ -28,7 +28,7 @@ const AgregarPaciente = ( ) =>{
             </div>
             <hr/>
             <div className = "bodyAggPac">
-                <form className="datosPaciente" method="post">
+                <div className="datosPaciente" method="post">
                     <h3> AGREGAR  PACIENTE</h3>
                     <br></br>
                     <br></br>
@@ -54,7 +54,7 @@ const AgregarPaciente = ( ) =>{
                         <button className = "agregarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>AGREGAR</button>
                         <button className ="cancelarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>CANCELAR</button>
                     </div>
-                </form>
+                </div>
                 <div className="pacienteImagen">
                 <img src='/images/paciente.png' alt='' width="100%" />
                 </div>
