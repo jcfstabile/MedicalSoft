@@ -32,7 +32,7 @@ const AgregarPaciente = ( ) =>{
                     
                     <br/>
                     <label for="dni">D.N.I</label>
-                    <input type="Number" name="dni" id="dni" onChange={handleChange}/>
+                    <input type="number" name="dni" id="dni" onChange={handleChange}/>
                     <div className="groupNombre">
                         <div className="nombreg">
                             <label for="nombre">NOMBRE</label>
@@ -44,10 +44,10 @@ const AgregarPaciente = ( ) =>{
                         </div>
                     </div>
                     <label for="telefono">NUMERO DE CONTACTO </label>
-                    <input type="Number" name="telefono" id="telefono" onChange={handleChange}/>
+                    <input type="number" name="telefono" id="telefono" onChange={handleChange}/>
                     <br></br>
                     <div className="botonesAggPac">
-                        <button className = "agregarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>INGRESAR</button>
+                        <button className = "agregarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>AGREGAR</button>
                         <button className ="cancelarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>CANCELAR</button>
                     </div>
                 </form>

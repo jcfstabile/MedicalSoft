@@ -5,12 +5,11 @@
     background: linear-gradient(90deg, rgba(18,17,20,1) 0%, rgba(167,25,48,1) 14%);
     height: 100vh;
     width: 100vw;
-
-   
 }
 
 .bodyAggPac{
     width:100vw ;
+    height: calc(100vh - 53px);
     display: flex;
     
 }
@@ -27,7 +26,7 @@
     display :flex;
     flex-direction: column;
     width:52vw;
-    height:46vw;
+    height:100%;
 }
 .groupNombre{
     display: flex;
@@ -46,7 +45,7 @@
 }
 
 input{
-    
+    color: black;
     border-color:#6b0e0e ;
     border-width: 3px;
     margin-top: 20px;
@@ -75,6 +74,7 @@ hr { display: block; height: 1px;
 
 .cancelarAggPac{
     background-color: gray;
+    color: black;
     font-size: 1.3vw;
     margin-left: 10px;
     font-family:'League Spartan'!important;
@@ -87,7 +87,7 @@ hr { display: block; height: 1px;
 
 
 .agregarAggPac{
-    
+    color: black;
     font-size: 1.3vw;
     font-family:'League Spartan'!important;
     border-radius: 6px;
@@ -97,9 +97,16 @@ hr { display: block; height: 1px;
 }
 
 .logoheaderImagen{
-    width:15vw;
+    width: 200px;
     margin-left:5.5vw;
-    
+    height: 50px;
 }
 
+.logoheaderImagen img {
+    width: 100%;
+    height: 100%;
+}
 
+h3 {
+    letter-spacing: 5px;
+}
