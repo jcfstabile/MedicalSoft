@@ -2,7 +2,7 @@ package ar.edu.unq.eis.medicalsoft
 
 import io.javalin.Javalin
 
-data class Usuario(val usuario : String, val password : String)
+data class Usuario(val username : String, val password : String)
 
 data class Paciente(val apellido : String, val nombre : String, val dni : String, val telefono : String )
 
@@ -49,8 +49,8 @@ object MedicalSoft {
 
         app.post("/api/login") { ctx ->
             val usuario = ctx.bodyAsClass(Usuario::class.java)
-            if (    (usuario.usuario == Administador.nombre && usuario.password == Administador.password)
-                ||  (usuario.usuario == Medico.nombre && usuario.password == Medico.password))
+            if (    (usuario.username == Administador.nombre && usuario.password == Administador.password)
+                ||  (usuario.username == Medico.nombre && usuario.password == Medico.password))
                 ctx.status(200)
             else
                 ctx.status(401)
