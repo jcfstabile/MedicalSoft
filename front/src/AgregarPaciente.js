@@ -28,7 +28,7 @@ const AgregarPaciente = ( ) =>{
             </div>
             <hr/>
             <div className = "bodyAggPac">
-                <div className="datosPaciente" method="post">
+                <div className="datosPaciente">
                     <h3> AGREGAR  PACIENTE</h3>
                     <br></br>
                     <br></br>
