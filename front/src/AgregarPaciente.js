@@ -1,6 +1,7 @@
 import React,{Fragment,useState} from "react"
 import Api from "./Api"
 import'./css/AgregarPaciente.css'
+import { Link } from "react-router-dom"
 
 const AgregarPaciente = ( ) =>{
     const[datos,setDatos] = useState ({dni:'',nombre:'',apellido:'',telefono:''})
@@ -20,6 +21,9 @@ const AgregarPaciente = ( ) =>{
         <Fragment>
         <div className="containerAggPac">
             <div className="logoheaderImagen">
+                <div className="flecha">
+                    <Link to='/home'>&lt;</Link>
+                </div>
                 <img src='/images/logoNombre.png' alt='' width="100%" />
             </div>
             <hr/>

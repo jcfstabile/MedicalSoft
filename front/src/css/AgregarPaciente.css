@@ -7,6 +7,28 @@
     width: 100vw;
 }
 
+.flecha {
+    height: 50px;
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flecha a {
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+}
+
+.flecha a:hover{
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+}
+
 .bodyAggPac{
     width:100vw ;
     height: calc(100vh - 53px);
@@ -98,8 +120,10 @@ hr { display: block; height: 1px;
 
 .logoheaderImagen{
     width: 200px;
-    margin-left:5.5vw;
     height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .logoheaderImagen img {
