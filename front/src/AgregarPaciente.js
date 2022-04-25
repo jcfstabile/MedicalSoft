@@ -2,6 +2,7 @@ import React,{Fragment,useState} from "react"
 import Api from "./Api"
 import'./css/AgregarPaciente.css'
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const AgregarPaciente = ( ) =>{
     const[datos,setDatos] = useState ({dni:'',nombre:'',apellido:'',telefono:''})
@@ -15,6 +16,12 @@ const AgregarPaciente = ( ) =>{
 
     const registrarPaciente = () =>{
         Api.agregarPaciente (datos)
+    }
+    
+    const navigate = useNavigate();
+
+    const reload = () => {
+        navigate(0);
     }
 
     return (
@@ -52,7 +59,7 @@ const AgregarPaciente = ( ) =>{
                     <br></br>
                     <div className="botonesAggPac">
                         <button className = "agregarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>AGREGAR</button>
-                        <button className ="cancelarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>CANCELAR</button>
+                        <button className ="cancelarAggPac" type="submit" id="btn-submit" onClick={reload}>CANCELAR</button>
                     </div>
                 </div>
                 <div className="pacienteImagen">
