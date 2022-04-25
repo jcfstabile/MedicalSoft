@@ -17,7 +17,7 @@
 
 .nav {
     width: 100vw;
-    height: 10vh;
+    height: 50px;
     border-bottom: 2px solid white;
     display: flex;
     flex-direction: raw;
@@ -39,10 +39,10 @@
 .nav-boton {
     height: 100%;
     font-size: 20px;
+    padding: 20px;
     padding-left: 10px;
     padding-right: 10px;
     display: inline-block;
-    padding: 4vh;
     /* display: flex;
     align-items: center; */
     cursor: pointer;
@@ -68,7 +68,7 @@
     min-width: 30vh;
     background-color: white;
     border-radius: 0px 15px 15px 15px;
-    transform: translateX(-20px);
+    transform: translate(-10px, 10px);
     overflow: hidden;
 }
 
@@ -89,7 +89,7 @@
 
 .imagenLogo {
     width: 100%;
-    height: 90vh;
+    height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
     justify-content: center;
