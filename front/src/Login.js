@@ -1,13 +1,15 @@
 import './css/Login.css';
 
-const Login = () => {
+const Login = (props) => {
     return (
         <div className='container'>
             <div className="box">
-                {/* <div className="logo">
-                    <img src='/images/logo.png' alt='' width="100%" />
-                </div> */}
+                <div className="logo">
+                    <img src='/images/logoLogin.png' alt='' width="100%" />
+                </div>
+                <hr width="80%" />  
                 <p>INICIAR SESIÓN</p>
+                <hr width="80%" />
                 <div className="campo">
                     <div className='campo-img'>
                         <img src='/images/usuario.png' alt='' width="100%" />
