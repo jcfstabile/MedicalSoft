@@ -105,6 +105,7 @@ hr { display: block; height: 1px;
     border-color:white;
     width: 20vw;
     height: 2.5vw;
+    cursor: pointer;
 }
 
 
@@ -116,6 +117,7 @@ hr { display: block; height: 1px;
     border-width: 2px;
     width: 20vw;
     height: 2.5vw;
+    cursor: pointer;
 }
 
 .logoheaderImagen{

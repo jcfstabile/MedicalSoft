@@ -2,6 +2,7 @@ import React,{Fragment,useState} from "react"
 import Api from "./Api"
 import'./css/AgregarPaciente.css'
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const AgregarPaciente = ( ) =>{
     const[datos,setDatos] = useState ({dni:'',nombre:'',apellido:'',telefono:''})
@@ -16,6 +17,12 @@ const AgregarPaciente = ( ) =>{
     const registrarPaciente = () =>{
         Api.agregarPaciente (datos)
     }
+    
+    const navigate = useNavigate();
+
+    const reload = () => {
+        navigate(0);
+    }
 
     return (
         <Fragment>
@@ -28,7 +35,7 @@ const AgregarPaciente = ( ) =>{
             </div>
             <hr/>
             <div className = "bodyAggPac">
-                <form className="datosPaciente" method="post">
+                <div className="datosPaciente">
                     <h3> AGREGAR  PACIENTE</h3>
                     <br></br>
                     <br></br>
@@ -52,9 +59,9 @@ const AgregarPaciente = ( ) =>{
                     <br></br>
                     <div className="botonesAggPac">
                         <button className = "agregarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>AGREGAR</button>
-                        <button className ="cancelarAggPac" type="submit" id="btn-submit" onClick={registrarPaciente}>CANCELAR</button>
+                        <button className ="cancelarAggPac" type="submit" id="btn-submit" onClick={reload}>CANCELAR</button>
                     </div>
-                </form>
+                </div>
                 <div className="pacienteImagen">
                 <img src='/images/paciente.png' alt='' width="100%" />
                 </div>
