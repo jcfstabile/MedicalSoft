@@ -1,13 +1,20 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, Routes } from 'react-router-dom';
+import * as React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import Login from './Login.js'
-//import Home from './Home.js'
-//import AgregarPaciente from './AgregarPaciente.js'
+import Home from './Home.js'
+import AgregarPaciente from './AgregarPaciente.js'
 
-export default function App() {
+function App (){
+
   return(
-    <Login />
+     <Routes>
+        <Route path="/login"            element={<Login/>}/>
+        <Route path="/agregarpaciente" element={<AgregarPaciente/>}/>
+        <Route path='/home'            element={<Home/>}/>
+        <Route path="*" element={<Login/>}/>
+     </Routes>
   );
-    //      <Route exact path ='/agregarpaciente' component ={AgregarPaciente}/>
-    //      <Route exact path ='/'                component ={Home}/>    
+
 }
+
+export default App
