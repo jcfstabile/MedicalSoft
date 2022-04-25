@@ -20,11 +20,11 @@ const AgregarPaciente = ( ) =>{
         <Fragment>
         <div className="containerAggPac">
             <div className="logoheaderImagen">
-                <img src='/images/logo nombre png.png' alt='' width="100%" />
+                <img src='/images/logoNombre.png' alt='' width="100%" />
             </div>
-            <hr className="hrHeader"/>
+            <hr/>
             <div className = "bodyAggPac">
-                <form className="datosPaciente">
+                <form className="datosPaciente" method="post">
                     <h3> AGREGAR  PACIENTE</h3>
                     <br></br>
                     <br></br>

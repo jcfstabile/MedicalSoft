@@ -9,10 +9,6 @@
    
 }
 
-.hrHeader{
-    background-color: #6b0e0e;
-}
-
 .bodyAggPac{
     width:100vw ;
     display: flex;
@@ -21,7 +17,7 @@
 
 .datosPaciente{
     padding: 15px;
-    box-shadow: 5px 450px 150px 1px black;
+    box-shadow: 50px 380px 170px 1px black;
     font-size: 1.5vw;
     margin-left:6vw;
     justify-content: center;
@@ -59,6 +55,10 @@ input{
     height: 2.5vw;
     border-radius: 5px;
 }
+
+hr { display: block; height: 1px;
+    border: 0; border-top: 3px solid #6b0e0e;
+    margin: 0; padding: 0; }
 
 .pacienteImagen{
     width: 25vw;

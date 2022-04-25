@@ -9,6 +9,11 @@ function agregarPaciente( payload){
     return axios.post(host.concat('/agregarpaciente'), payload)
 }
 
+function login (datosUsuario){
+    return axios.post(host.concat('/login'),datosUsuario)
+}
+
 export default{
-    agregarPaciente
+    agregarPaciente,
+    login
 }

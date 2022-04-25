@@ -7,14 +7,16 @@
 }
 
 .container {
-    background-image: url("/public/images/vector-de-fondo-medico.jpg");
-    background-size: contain;
+    background-image: url("/public/images/vectorFondoMedico.png");
+    background-size:20vw;
+    background-repeat: repeat;
     height: 100vh;
     width: 100vw;
     display: flex;
 }
 
 .box {
+    box-shadow: 50px 80px 140px 25px black;
     width: 400px;
     height: 600px;
     margin: auto;
