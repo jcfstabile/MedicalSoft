@@ -3,6 +3,7 @@ import Api from "./Api"
 import'./css/AgregarPaciente.css'
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import PacientForm from './PacientForm'
 
 const AgregarPaciente = ( ) =>{
     const[datos,setDatos] = useState ({dni:'',nombre:'',apellido:'',telefono:''})
@@ -63,6 +64,7 @@ const AgregarPaciente = ( ) =>{
                         <button className ="cancelarAggPac" type="submit" id="btn-submit" onClick={reload}>CANCELAR</button>
                     </div>
                 </div>
+                 {/* //<PacientForm></PacientForm> */}
                 <div className="pacienteImagen">
                 <img src='/images/paciente.png' alt='' width="100%" />
                 </div>
