@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+.containerAggPac{
+    background: rgb(18,17,20);
+    background: linear-gradient(90deg, rgba(18,17,20,1) 0%, rgba(167,25,48,1) 14%);
+    height: 100vh;
+    width: 100vw;
+}
+
+.flecha {
+    height: 50px;
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flecha a {
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+}
+
+.flecha a:hover{
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+}
+
+.bodyAggPac{
+    width:100vw ;
+    height: calc(100vh - 53px);
+    display: flex;
+    
+}
+
+input {
+    color: black;
+    border-color:#6b0e0e ;
+    border-width: 3px;
+    margin-top: 20px;
+    margin-bottom: 17px;
+    width: 23vw;
+    height: 2.5vw;
+    border-radius: 5px;
+}
+
+hr { 
+    display: block; height: 1px;
+    border: 0; border-top: 3px solid #6b0e0e;
+    margin: 0; padding: 0; 
+}
+
+.boton {
+    display: flex;
+    width: 30vw;
+    height: 2.5vw;
+    color: black;
+}
+
+.boton-buscar {
+    color: black;
+    font-size: 1.3vw;
+    font-family:'League Spartan'!important;
+    border-radius: 6px;
+    border-width: 2px;
+    width: 20vw;
+    height: 2.5vw;
+    cursor: pointer;
+}
+
+.logoheaderImagen{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logoheaderImagen img {
+    width: 100%;
+    height: 100%;
+}
+
+h3 {
+    letter-spacing: 5px;
+}
