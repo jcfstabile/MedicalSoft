@@ -99,10 +99,10 @@
     border-radius: 0px;
 }
 
-.boton {
+.botonLogin {
     width: 250px;
     color: white;
-    background-color: #b9b9b9;
+    background-color: #8d8b8b;
     margin-top: 50px;
     padding: 15px;
     border-radius: 5px;
@@ -112,6 +112,6 @@
     cursor: pointer;
 }
 
-.boton:hover {
-    background-color: #8d8b8b;
+.botonLogin:hover {
+    background-color: #a5a5a5;
 }
