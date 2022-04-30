@@ -37,7 +37,7 @@
 }
 
 .datosPaciente{
-    padding: 15px;
+    padding: 30px;
     box-shadow: 50px 380px 170px 1px black;
     font-size: 1.5vw;
     margin-left:6vw;
@@ -70,8 +70,8 @@ input{
     color: black;
     border-color:#6b0e0e ;
     border-width: 3px;
-    margin-top: 20px;
-    margin-bottom: 17px;
+    margin-top: 15px;
+    margin-bottom: 25px;
     width: 23vw;
     height: 2.5vw;
     border-radius: 5px;
@@ -135,4 +135,25 @@ hr { display: block; height: 1px;
 
 h3 {
     letter-spacing: 5px;
+}
+
+.mensajeError{
+    display: flex;
+    width:20vw;
+    padding: 5px;
+    font-size: 12px;
+    background-color:white;
+    color:red;
+    border-radius: 6px;
+    margin-bottom: 7px;
+    margin-top: -11px;
+}
+
+.errorIcon{
+    width: 1vw;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+label{
+    margin-top:10px;
 }
