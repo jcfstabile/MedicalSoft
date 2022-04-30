@@ -24,17 +24,15 @@ const BuscarPaciente = ( ) =>{
                 <img src='/images/logoNombre.png' alt='' width="100%" />
             </div>
             <hr/>
-            <div className = "bodyAggPac">
-                    <h3> BUSCAR  PACIENTE</h3>
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                    <br/>
-                    <label for="dni">D.N.I</label>
-                    <input type="number" name="dni" id="dni" onChange={onChange}/>
-                    <br></br>
-                    <div className="boton">
+            <div className = "bodyAggPac2">
+                    <div className="titulo">BUSCAR PACIENTE</div>
+                    <div className="search">
+                        <label for="dni">D.N.I</label>
+                        <input class="inputD" type="number" name="dni" id="dni" onChange={onChange}/>
                         <button className = "boton-buscar" type="submit" id="btn-submit" onClick={buscarPaciente}>BUSCAR</button>
+                    </div>
+                    <div className="datosTraidos">
+
                     </div>
                 </div>
         </div>  
