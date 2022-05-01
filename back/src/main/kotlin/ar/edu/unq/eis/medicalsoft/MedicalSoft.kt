@@ -56,6 +56,16 @@ object MedicalSoft {
                 ctx.status(401)
         }
 
+        app.get("/api/paciente") { ctx ->
+            val dni = ctx.queryParam("dni")
+            try {
+                val paciente = PacienteService(base).obtener(dni)
+                ctx.status(200).json(paciente)
+            } catch (es : ExcepcionPacienteInexistente) {
+                ctx.status(404)
+            }
+        }
+
         app.post("/api/paciente") { ctx ->
             val paciente = ctx.bodyAsClass(Paciente::class.java)
             println(paciente)
@@ -67,12 +77,17 @@ object MedicalSoft {
             }
 
         }
+
     }
 }
 
 class PacienteService(val base : Persistencia) {
     fun agregar(paciente : Paciente) {
         base.addPaciente(paciente.dni, paciente.nombre, paciente.apellido, paciente.telefono)
+    }
+
+    fun obtener(dni: String?) : Paciente {
+        return base.getPaciente(dni!!)
     }
 }
 
