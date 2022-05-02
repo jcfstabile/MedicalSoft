@@ -13,6 +13,14 @@ function login (datosUsuario){
     return axios.post(host.concat('/api/login'),datosUsuario)
 }
 
+function buscarPaciente(dni) {
+    return axios.post(host.concat('/api/paciente'), dni)
+}
+
+function traerPaciente() {
+    return axios.get(host.concat('/api/paciente'))
+}
+
 export default{
     agregarPaciente,
     login
