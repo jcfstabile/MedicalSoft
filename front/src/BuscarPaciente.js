@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const BuscarPaciente = ( ) =>{
     const[dni,setDni] = useState ("");
+    const[datos, setDatos] = useState("");
 
     const onChange = (e) => {
         setDni(e.target.value);
@@ -12,6 +13,11 @@ const BuscarPaciente = ( ) =>{
 
     const buscarPaciente = () =>{
         Api.buscarPaciente(dni)
+    }
+
+    const datosPaciente = () => {
+        const datos = Api.traerPaciente();
+        setDatos(datos);
     }
 
     return (
@@ -32,7 +38,10 @@ const BuscarPaciente = ( ) =>{
                         <button className = "boton-buscar" type="submit" id="btn-submit" onClick={buscarPaciente}>BUSCAR</button>
                     </div>
                     <div className="datosTraidos">
-
+                        <p>DNI: {datos.dni}</p>
+                        <p>NOMBRE: {datos.nombre}</p>
+                        <p>APELLIDO: {datos.apellido}</p>
+                        <p>TELEFONO: {datos.telefono}</p>
                     </div>
                 </div>
         </div>  
