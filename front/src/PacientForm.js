@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "./useForm";
 import { Fragment } from "react";
 
@@ -47,7 +49,8 @@ const PacientForm = () => {
     const {
         form,
         errors,
-        response,
+        successRegister,
+        errorRegister,
         handleChange,
         handleBlur,
         handleSubmit
@@ -63,30 +66,28 @@ const PacientForm = () => {
            <form className="datosPaciente" onSubmit={handleSubmit} >
                 <h3> AGREGAR  PACIENTE</h3>
                 <br></br>
-                <br></br>
-                <br></br>
-                    
+                
                 <br/>
-                <label for="dni">D.N.I</label>
+                <label for="dni"className="labelAggPaciente">D.N.I</label>
                 {errors.dni && <FontAwesomeIcon icon={faCircleXmark} className="errorIcon"/>}
                 <input type="text" name="dni" id="dni" onBlur={handleBlur} onChange={handleChange} value={form.dni} />
                 {errors.dni &&<p className="mensajeError">{errors.dni}</p>}
                 <div className="groupNombre">
                     <div className="nombreg">
-                        <label for="nombre">NOMBRE</label>
+                        <label for="nombre" className="labelAggPaciente">NOMBRE</label>
                         {errors.nombre && <FontAwesomeIcon icon={faCircleXmark} className="errorIcon"/>}
                         <input type="text" name="nombre" id="nombre" onBlur={handleBlur} onChange={handleChange} value={form.name} />
                         {errors.nombre &&<p className="mensajeError">{errors.nombre}</p>}
                     </div>   
                     <div className="apellidog">
-                        <label for="apellido">APELLIDO </label>
+                        <label for="apellido"className="labelAggPaciente">APELLIDO </label>
                         {errors.apellido && <FontAwesomeIcon icon={faCircleXmark} className="errorIcon"/>}
                         <input type="text" name="apellido" id="apellido" onBlur={handleBlur} onChange={handleChange} value={form.apellido} />                    
                         {errors.apellido &&<p className="mensajeError">{errors.apellido}</p>}
                    </div>
 
                 </div>
-                <label for="telefono">NUMERO DE CONTACTO </label>
+                <label for="telefono"className="labelAggPaciente">NUMERO DE CONTACTO </label>
                 {errors.telefono && <FontAwesomeIcon icon={faCircleXmark} className="errorIcon"/>}
                 <input type="Number" name="telefono" id="telefono" onBlur={handleBlur} onChange={handleChange} value={form.telefono} />                
                 {errors.telefono &&<p className="mensajeError">{errors.telefono}</p>}
@@ -95,6 +96,8 @@ const PacientForm = () => {
                     <button className = "agregarAggPac" type="submit" id="btn-submit" >AGREGAR</button>
                     <button className ="cancelarAggPac" onClick={reload}>CANCELAR</button>
                 </div>
+                {successRegister && (<div className="feedBackMsg"><FontAwesomeIcon icon={faCheckCircle} className ="feedbackIcon"/><p className="msgFeedback">Paciente agregado exitosamente</p></div>)}
+                {errorRegister &&(<div className="feedBackMsg"><FontAwesomeIcon icon={faTriangleExclamation} className = "feedbackIcon"/><p className="msgFeedback">No se pudo agregar el paciente porque ya existe</p></div>)}
             </form>
         </Fragment>
         

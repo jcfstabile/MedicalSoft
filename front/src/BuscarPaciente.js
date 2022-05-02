@@ -9,6 +9,14 @@ const BuscarPaciente = ( ) =>{
 
     const onChange = (e) => {
         setDni(e.target.value);
+        let errors = {}
+	    let regexVacio = /^\s*$/ //campo vacio
+        let regexDNI = /^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/; // 4 a 12 digitos.
+        if(regexVacio.test(dni)){
+            errors.error = "Necesita completar el campo DNI antes de continuar "
+        }else if (regexDNI.test(dni)){
+            errors.error = "El DNI no es valido"
+        }
     }
 
     const buscarPaciente = async () => {
@@ -19,7 +27,7 @@ const BuscarPaciente = ( ) =>{
 
     return (
         <Fragment>
-        <div className="containerAggPac">
+        <div className="containerBuscarPac">
             <div className="logoheaderImagen">
                 <div className="flecha">
                     <Link to='/home'>&lt;</Link>
@@ -34,6 +42,8 @@ const BuscarPaciente = ( ) =>{
                         <input class="inputD" type="number" name="dni" id="dni" onChange={onChange}/>
                         <button className = "boton-buscar" type="submit" id="btn-submit" onClick={buscarPaciente}>BUSCAR</button>
                     </div>
+                    {errors.error &&<p >{errors.error}</p>}
+                
                     <div className="datosTraidos">
                         <p>DNI: <p>{datos.dni}</p></p>
                         <p>NOMBRE: <p>{datos.nombre}</p></p>

@@ -47,7 +47,7 @@
     color :white ;
     display :flex;
     flex-direction: column;
-    width:52vw;
+    width:56vw;
     height:100%;
 }
 .groupNombre{
@@ -154,6 +154,22 @@ h3 {
     margin-left: -20px;
     margin-top: -20px;
 }
-label{
+.labelAggPaciente{
     margin-top:10px;
+}
+
+.feedBackMsg{
+    margin-top:25px;
+    display: flex;
+}
+
+.feedbackIcon{
+    margin-bottom:5px;
+    margin-left: 5px;
+    margin-right:10px ;
+    width:1.1vw;
+}
+
+.msgFeedback{
+    font-size: 21px;
 }

@@ -5,7 +5,8 @@ import api from './Api'
 export const useForm = (initialForm,validateForm) => {
     const[form,setForm] = useState (initialForm);
     const[errors,setErrors] = useState ({}) ; //si el objeto no tiene ningun elemento durante la validacion significa que esta todo ok
-    const[response,setResponse] = useState (null);
+    const[successRegister,setSuccessRegister] = useState (false);
+    const[errorRegister,setErrorRegister] = useState (false);
 
     //variables que se van a ejecutar en los eventos
     const handleChange = (e) => {
@@ -25,19 +26,23 @@ export const useForm = (initialForm,validateForm) => {
         setErrors(validateForm(form));
         if(errors){
             api.agregarPaciente(form).then((res) => {
-                setResponse(true);
                 setForm(initialForm);
-                setTimeout(() => setResponse(false), 5000);
-              });
-          } else {
-            return;
-        }
+                setSuccessRegister(true)
+                setTimeout(() => setSuccessRegister(false), 5000);
+              })
+              .catch((error) => {
+                console.log(error.response)    
+                setErrorRegister(true)
+            })
+          } 
+        
     }
     
     return {
         form,
         errors,
-        response,
+        successRegister,
+        errorRegister,
         handleBlur,
         handleChange,
         handleSubmit
