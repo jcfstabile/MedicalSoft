@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;&display=swap');
+
 
 .containerAggPac{
     background: rgb(18,17,20);
@@ -89,6 +90,7 @@ hr {
 
 .inputD {
     margin: 0;
+    padding-left: 10px;
     color: black;
     border-color:#6b0e0e ;
     border-width: 3px;
@@ -112,12 +114,19 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 50px;
+    gap: 30px;
+    padding: 40px;
     border-radius: 40px;
 }
 
 .datosTraidos p {
     color: black;
     font-size: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.datosTraidos p p {
+    text-transform: none;
+    margin-left: 10px;
 }
