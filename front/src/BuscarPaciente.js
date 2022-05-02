@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const BuscarPaciente = ( ) =>{
     const[dni,setDni] = useState ("");
     const[datos, setDatos] = useState("");
+    const[errors, setErrors] = useState("");
 
     const onChange = (e) => {
         setDni(e.target.value);
@@ -13,9 +14,11 @@ const BuscarPaciente = ( ) =>{
 	    let regexVacio = /^\s*$/ //campo vacio
         let regexDNI = /^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/; // 4 a 12 digitos.
         if(regexVacio.test(dni)){
-            errors.error = "Necesita completar el campo DNI antes de continuar "
+            errors.error = "Necesita completar el campo DNI antes de continuar ";
+            setErrors(errors);
         }else if (regexDNI.test(dni)){
-            errors.error = "El DNI no es valido"
+            errors.error = "El DNI no es valido";
+            setErrors(errors);
         }
     }
 
