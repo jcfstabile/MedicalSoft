@@ -55,7 +55,7 @@ const Login = (props) => {
                                 setPasswordLog (e.target.value);
                             }}/>
                 </div>
-                <button className='boton' onClick={loguear}>INGRESAR</button>
+                <button className='botonLogin' onClick={loguear}>INGRESAR</button>
             </div>
         </div>
     );

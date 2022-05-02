@@ -11,6 +11,7 @@ const Home = (props) => {
                     <span>Pacientes</span>
                     <div class="submenu">
                         <Link to='/agregarPaciente'>Agregar paciente</Link>
+                        <Link to='/buscarPaciente'>Buscar paciente</Link>
                     </div>
                 </div>
             </div>
