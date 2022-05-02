@@ -11,13 +11,10 @@ const BuscarPaciente = ( ) =>{
         setDni(e.target.value);
     }
 
-    const buscarPaciente = () =>{
-        Api.buscarPaciente(dni)
-    }
-
-    const datosPaciente = () => {
-        const datos = Api.traerPaciente();
-        setDatos(datos);
+    const buscarPaciente = async () => {
+        const data = await Api.buscarPaciente(dni)
+        setDatos(data)
+        console.log(datos);
     }
 
     return (
@@ -38,10 +35,10 @@ const BuscarPaciente = ( ) =>{
                         <button className = "boton-buscar" type="submit" id="btn-submit" onClick={buscarPaciente}>BUSCAR</button>
                     </div>
                     <div className="datosTraidos">
-                        <p>DNI: {datos.dni}</p>
-                        <p>NOMBRE: {datos.nombre}</p>
-                        <p>APELLIDO: {datos.apellido}</p>
-                        <p>TELEFONO: {datos.telefono}</p>
+                        <p>DNI: <p>{datos.dni}</p></p>
+                        <p>NOMBRE: <p>{datos.nombre}</p></p>
+                        <p>APELLIDO: <p>{datos.apellido}</p></p>
+                        <p>TELEFONO: <p>{datos.telefono}</p></p>
                     </div>
                 </div>
         </div>  
