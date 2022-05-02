@@ -11,7 +11,7 @@ class ApiTest : SetUpTest() {
     fun `Login endpoint usuario esta autorizado`(){
         val response = khttp.post(
             url = "http://localhost:7777/api/login",
-            json = mapOf("usuario" to "administrador", "password" to "1234")
+            json = mapOf("username" to "administrador", "password" to "1234")
         )
         assertEquals(200, response.statusCode)
     }
@@ -20,9 +20,41 @@ class ApiTest : SetUpTest() {
     fun `Login endpoint usuario no autorizado`(){
         val response = khttp.post(
             url = "http://localhost:7777/api/login",
-            json = mapOf("usuario" to "value1", "password" to "valuen")
+            json = mapOf("username" to "value1", "password" to "valuen")
         )
         assertEquals(401, response.statusCode)
+    }
+
+    @Test
+    fun `Paciente endpoint not found por dni inexistente` () {
+
+        val payload = mapOf( "dni"  to  "99999999")
+        val response = khttp.get(
+            url = "http://localhost:7777/api/paciente",
+            params=payload
+        )
+        assertEquals(404, response.statusCode)
+    }
+
+    @Test
+    fun `Paciente endpoint Buscar por dni con exito` () {
+        val values = mapOf( "apellido" to "L", "nombre" to  "O" , "dni"  to  "23418148" , "telefono" to  "")
+        khttp.post(
+            url = "http://localhost:7777/api/paciente",
+            json = values
+        )
+
+        val payload = mapOf( "dni"  to  "23418148")
+        val response = khttp.get(
+            url = "http://localhost:7777/api/paciente",
+            params=payload
+        )
+
+        assertEquals(200, response.statusCode)
+        assertEquals("23418148", response.jsonObject.getString("dni"))
+        assertEquals("L", response.jsonObject.getString("apellido"))
+        assertEquals("O", response.jsonObject.getString("nombre"))
+        assertEquals("", response.jsonObject.getString("telefono"))
     }
 
     @Test

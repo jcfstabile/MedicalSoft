@@ -4,6 +4,7 @@ import com.mysql.cj.jdbc.exceptions.CommunicationsException
 import java.sql.*
 
 class ExcepcionExistePaciente(val mensaje : String ) : RuntimeException(mensaje)
+class ExcepcionPacienteInexistente(val mensaje : String ) : RuntimeException(mensaje)
 
 class Persistencia {
 
@@ -90,6 +91,19 @@ class Persistencia {
         return connection
     }
 
+    fun getPaciente(dni : String) : Paciente {
+        val rs = sqlQuery(
+            """
+                SELECT * FROM Pacientes
+                WHERE dni LIKE ${dni};
+            """.trimIndent()
+        )
+        if (! rs!!.next()) {
+            throw ExcepcionPacienteInexistente("No existe paciente con DNI: ${dni}")
+        }
+        return Paciente(rs!!.getString("apellido"), rs!!.getString("nombre"), rs!!.getString("dni"), rs!!.getString("telefono"))
+    }
+
     fun addPaciente(dni : String, nombre : String, apellido : String, telefono : String): Int {
         return sqlUpdate(
             """
@@ -98,4 +112,5 @@ class Persistencia {
                 """
         )
     }
+
 }
