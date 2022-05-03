@@ -1,60 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import './App.css';
-import axios from 'axios';
+import * as React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Login from './Login.js'
+import Home from './Home.js'
+import AgregarPaciente from './AgregarPaciente.js'
+import BuscarPaciente from './BuscarPaciente.js'
 
-function App() {
-    const [bases, setBases] = useState();
-    const [msg, setMsg] = useState();
-    const back = axios.create({
-        baseURL: 'http://localhost:7777',
-    });
+function App (){
 
-    const getDatabases = () => {
-        setBases(undefined)
-        back.get('/list-of-databases')
-            .then(response => {
-                console.log(response.status)
-                switch (response.status) {
-                    case 200:
-                        setBases(response.data.listOfBases)
-                        break
-                    // case 500:
-                    //     setMsg(response.data.msg);
-                    //     console.log("en 500", response)
-                    //     break;
-                    default:
-                        setMsg("Status code is:${response.status}")
-                }
-            })
-            .catch( err => {
-                console.log("Get list of databases Error:", err);
-                setMsg(err);
-            })
-    }
-
-    useEffect( () => {
-        // getDatabases()
-    }, []);
-
-    console.log(bases);
-    console.log(msg);
-
-    return (
-        <div className="App">
-            <header className="App-header">
-                <>
-                    <button onClick={getDatabases}>Get Databases</button>
-                    <ul>{
-                        bases ? bases.map(
-                                (base) => <li key={base}>{base}</li>)
-                            : msg ? <p>{msg.toString()}</p> : <p> </p>
-                    }
-                    </ul>
-                </>
-                Learn React
-            </header>
-        </div>
+  return(
+     <Routes>
+        <Route path="/login"            element={<Login/>}/>
+        <Route path="/agregarPaciente" element={<AgregarPaciente/>}/>
+        <Route path='/home'            element={<Home/>}/>
+        <Route path='/buscarPaciente' element={<BuscarPaciente />} />
+        <Route path="*" element={<Login/>}/>
+     </Routes>
   );
+
 }
 
-export default React.memo(App);
+export default App

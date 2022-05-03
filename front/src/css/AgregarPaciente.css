@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+.containerAggPac{
+    background: rgb(18,17,20);
+    background: linear-gradient(90deg, rgba(18,17,20,1) 0%, rgba(167,25,48,1) 14%);
+    height: 100vh;
+    width: 100vw;
+}
+
+.flecha {
+    height: 50px;
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flecha a {
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+}
+
+.flecha a:hover{
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+}
+
+.bodyAggPac{
+    width:100vw ;
+    height: calc(100vh - 53px);
+    display: flex;
+    
+}
+
+.datosPaciente{
+    padding: 30px;
+    box-shadow: 50px 380px 170px 1px black;
+    font-size: 1.5vw;
+    margin-left:6vw;
+    justify-content: center;
+    align-items: left;
+    font-family:'League Spartan'!important;
+    color :white ;
+    display :flex;
+    flex-direction: column;
+    width:56vw;
+    height:100%;
+}
+.groupNombre{
+    display: flex;
+}
+
+.nombreg{
+    display: flex;
+    flex-direction: column;
+}
+
+.apellidog{
+    display: flex;
+    flex-direction: column;
+    margin-left: 3vw;
+    
+}
+
+input{
+    color: black;
+    border-color:#6b0e0e ;
+    border-width: 3px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    width: 23vw;
+    height: 2.5vw;
+    border-radius: 5px;
+}
+
+hr { display: block; height: 1px;
+    border: 0; border-top: 3px solid #6b0e0e;
+    margin: 0; padding: 0; }
+
+.pacienteImagen{
+    width: 25vw;
+    margin-left:4vw;
+    margin-top: 2.5vw;
+}
+
+.botonesAggPac{
+    display: flex;
+    width: 30vw;
+    height: 2.5vw;
+    color: black;
+}    
+
+.cancelarAggPac{
+    background-color: gray;
+    color: black;
+    font-size: 1.3vw;
+    margin-left: 10px;
+    font-family:'League Spartan'!important;
+    border-radius: 6px;
+    border-width: 2px;
+    border-color:white;
+    width: 20vw;
+    height: 2.5vw;
+    cursor: pointer;
+}
+
+
+.agregarAggPac{
+    color: black;
+    font-size: 1.3vw;
+    font-family:'League Spartan'!important;
+    border-radius: 6px;
+    border-width: 2px;
+    width: 20vw;
+    height: 2.5vw;
+    cursor: pointer;
+}
+
+.logoheaderImagen{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logoheaderImagen img {
+    width: 100%;
+    height: 100%;
+}
+
+h3 {
+    letter-spacing: 5px;
+}
+
+.mensajeError{
+    display: flex;
+    width:20vw;
+    padding: 5px;
+    font-size: 12px;
+    background-color:white;
+    color:red;
+    border-radius: 6px;
+    margin-bottom: 7px;
+    margin-top: -11px;
+}
+
+.errorIcon{
+    width: 1vw;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+.labelAggPaciente{
+    margin-top:10px;
+}
+
+.feedBackMsg{
+    margin-top:25px;
+    display: flex;
+}
+
+.feedbackIcon{
+    margin-bottom:5px;
+    margin-left: 5px;
+    margin-right:10px ;
+    width:1.1vw;
+}
+
+.msgFeedback{
+    font-size: 21px;
+}
