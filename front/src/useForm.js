@@ -23,10 +23,13 @@ export const useForm = (initialForm,validateForm) => {
     };
     const handleSubmit = (e) => {;
         e.preventDefault();
+        console.log(e.target)
         setErrors(validateForm(form));
         if(errors){
             api.agregarPaciente(form).then((res) => {
-                setForm(initialForm);
+                e.target.reset()
+                setErrors({})
+                setErrorRegister(false)
                 setSuccessRegister(true)
                 setTimeout(() => setSuccessRegister(false), 5000);
               })
