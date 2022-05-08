@@ -33,6 +33,10 @@ const BusquedaComponent = () =>{
         };
     }
 
+    const buscarTurno = () => {
+        
+    }
+
     const handleChange = (e) => {
         let regexDNI = /^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/; // 4 a 10 digitos.
         console.log(e.target.value);
@@ -74,7 +78,12 @@ const BusquedaComponent = () =>{
                 <p>APELLIDO: <p>{datos.apellido}</p></p>
                 <p>TELEFONO: <p>{datos.telefono}</p></p>
             </div>
-
+            <div className="botones-buscarPaciente">
+                {datos.dni == "" 
+                ? ""
+                : <button className = "boton-buscar" type="submit" onClick={buscarTurno}>BUSCAR TURNO</button>
+                }
+            </div>
         </Fragment> 
     )
 };

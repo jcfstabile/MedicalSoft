@@ -110,7 +110,7 @@ label {
 .datosTraidos {
     width: 40vw;
     background-color: #d9d9d9;
-    margin-top: 100px;
+    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -120,12 +120,6 @@ label {
     gap: 30px;
     padding: 40px;
     border-radius: 40px;
-    position: absolute;
-    top:20vw;
-    left: 0;
-    right: 0;
-    bottom: 10;
-    margin: auto;
 }
 
 
@@ -220,4 +214,12 @@ label {
     padding:1px;
     color: #6b0e0e !important;
 }
+.botones-buscarPaciente {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 
