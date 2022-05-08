@@ -78,7 +78,26 @@ object MedicalSoft {
 
         }
 
+        app.get("/api/turnos") { ctx ->
+//             data class Turno(val fecha : String, val hora : String )
+//             data class Turnos(val turnos : Array<Turno>)
+            //val turnos = Turnos(arrayOf(Turno("9999-12-31", "11:22:00", "")))
+            val turnos = TurnosService(base).obtenerTurnosDisponibles()
+            ctx.status(200)
+            ctx.json(turnos)
+        }
+
     }
+}
+
+data class TurnoDisponible  (val fecha : String, val hora : String)
+data class Turno  (val fecha : String, val hora : String, val dni : String)
+data class Turnos (val turnos : Array<TurnoDisponible>)
+
+class TurnosService(val base : Persistencia) {
+   fun obtenerTurnosDisponibles() : Turnos {
+      return base.getTurnosDisponibles()
+   }
 }
 
 class PacienteService(val base : Persistencia) {

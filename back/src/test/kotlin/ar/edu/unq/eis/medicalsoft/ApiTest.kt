@@ -8,6 +8,17 @@ import org.junit.jupiter.api.Assertions.*
 class ApiTest : SetUpTest() {
 
     @Test
+    fun `Turnos endpoint todos los turnos disponibles`(){
+        val response = khttp.get(
+            url = "http://localhost:7777/api/turnos",
+        )
+
+        assertEquals(200, response.statusCode)
+        assertEquals("[{\"fecha\":\"9999-12-31\",\"hora\":\"11:22:00\"},{\"fecha\":\"9999-10-20\",\"hora\":\"01:59:00\"}]"
+                   , response.jsonObject["turnos"].toString())
+    }
+
+    @Test
     fun `Login endpoint usuario esta autorizado`(){
         val response = khttp.post(
             url = "http://localhost:7777/api/login",
