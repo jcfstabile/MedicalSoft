@@ -18,11 +18,20 @@ const BusquedaComponent = () =>{
     const [datos,setDatos] = useState (InitalData)
     const [error,setError] = useState ("")
 
-    const buscarPaciente = async () => {
-        const data = await Api.buscarPaciente(search)
-        setDatos(data);
-        console.log(datos);
-    };
+    const buscarPaciente = async (e) => {
+        try {
+            e.target.preventDefault()
+            const response= await Api.buscarPaciente(search)
+            setDatos(response)
+            if(!response.ok){
+                setError("No hay paciente con el DNI ingresado")
+                setTimeout(() => setError(""), 4000);
+            }
+            
+        }catch (error) {
+            console.log(error)
+        };
+    }
 
     const handleChange = (e) => {
         let regexDNI = /^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/; // 4 a 10 digitos.
@@ -57,7 +66,7 @@ const BusquedaComponent = () =>{
                     <input value={search} onChange={handleChange} onBlur = {handleBlur} class="inputD" type="number" name="dni" id="dni" />
                     <button className = "boton-buscar" type="submit" id="btn-submit" onClick={buscarPaciente}>BUSCAR</button>
                 </div>
-                {error? <p className = "errorMsgBuscarPac">{error}</p> : null}
+                {<p className = "errorMsgBuscarPac">"No hay paciente con el DNI ingresado"</p>}
             </div>
             <div className="datosTraidos">
                 <p>DNI: <p>{datos.dni}</p></p>
