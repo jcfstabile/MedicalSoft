@@ -79,12 +79,15 @@ object MedicalSoft {
         }
 
         app.get("/api/turnos") { ctx ->
-//             data class Turno(val fecha : String, val hora : String )
-//             data class Turnos(val turnos : Array<Turno>)
-            //val turnos = Turnos(arrayOf(Turno("9999-12-31", "11:22:00", "")))
             val turnos = TurnosService(base).obtenerTurnosDisponibles()
             ctx.status(200)
             ctx.json(turnos)
+        }
+
+        app.patch("/api/turnos") { ctx ->
+            val turnoAsignado = ctx.bodyAsClass(Turno::class.java)
+            TurnosService(base).asignarTurno(turnoAsignado)
+            ctx.status(204)
         }
 
     }

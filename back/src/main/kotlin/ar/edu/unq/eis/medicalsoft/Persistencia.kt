@@ -113,6 +113,16 @@ class Persistencia {
         )
     }
 
+    fun updateTurno(fecha : String, hora : String, dni : String) : Int {
+        return sqlUpdate(
+            """
+                UPDATE Turnos
+                SET dni = '${dni}'
+                WHERE fecha = '${fecha}' AND hora = '${hora}';
+            """.trimIndent()
+        )
+    }
+
     fun addTurno(fecha : String, hora : String, dni : String) : Int {
         return sqlUpdate(
             """

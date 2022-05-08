@@ -8,5 +8,9 @@ class TurnosService(val base : Persistencia) {
     fun obtenerTurnosDisponibles() : Turnos {
         return base.getTurnosDisponibles()
     }
+
+    fun asignarTurno(turno: Turno) {
+        base.updateTurno(turno.fecha, turno.hora, turno.dni)
+    }
 }
 
