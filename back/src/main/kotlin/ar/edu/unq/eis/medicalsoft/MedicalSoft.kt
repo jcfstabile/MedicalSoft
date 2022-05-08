@@ -90,26 +90,6 @@ object MedicalSoft {
     }
 }
 
-data class TurnoDisponible  (val fecha : String, val hora : String)
-data class Turno  (val fecha : String, val hora : String, val dni : String)
-data class Turnos (val turnos : Array<TurnoDisponible>)
-
-class TurnosService(val base : Persistencia) {
-   fun obtenerTurnosDisponibles() : Turnos {
-      return base.getTurnosDisponibles()
-   }
-}
-
-class PacienteService(val base : Persistencia) {
-    fun agregar(paciente : Paciente) {
-        base.addPaciente(paciente.dni, paciente.nombre, paciente.apellido, paciente.telefono)
-    }
-
-    fun obtener(dni: String?) : Paciente {
-        return base.getPaciente(dni!!)
-    }
-}
-
 fun main() {
     val persistencia = Persistencia()
     persistencia.useProductionDB()
