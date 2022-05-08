@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faRectangleList} from "@fortawesome/free-solid-svg-icons"
 import Api from "./Api";
 
-const BuscarPaciente_Y_AsignarTurno = () =>{
+const BuscarPaciente = () =>{
     const[estadoModal,setEstadoModal] = useState(false)
     const[turnos,setTurnos] = useState({})
     const[turnoElegido,setTurnoElegido] = useState({})
@@ -78,4 +78,4 @@ const BuscarPaciente_Y_AsignarTurno = () =>{
     )
 }
 
-export default BuscarPaciente_Y_AsignarTurno;
+export default BuscarPaciente;

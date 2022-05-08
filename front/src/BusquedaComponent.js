@@ -20,16 +20,13 @@ const BusquedaComponent = ({activarModal}) =>{
 
     const buscarPaciente = async (e) => {
         try {
-            e.target.preventDefault()
-            const response= await Api.buscarPaciente(search)
+            const response = await Api.buscarPaciente(search)
             setDatos(response)
-            if(!response.ok){
-                setError("No hay paciente con el DNI ingresado")
-                setTimeout(() => setError(""), 4000);
-            }
             
-        }catch (error) {
-            console.log(error)
+        } catch (error) {
+            setError("No hay paciente con el DNI ingresado")
+            setTimeout(() => setError(""), 4000);
+            setDatos(InitalData);
         };
     }
 
@@ -76,7 +73,8 @@ const BusquedaComponent = ({activarModal}) =>{
             </div>
             <div className="botones-buscarPaciente">
                 {datos.dni == "" 
-                ?<button className = "boton-buscar" type="submit" onClick={()=>activarModal(true)}>BUSCAR TURNO</button>:""
+                ? ""
+                : <button className = "boton-buscar" type="submit" onClick={()=>activarModal(true)}>BUSCAR TURNO</button>
                 }
             </div>
         </Fragment> 
