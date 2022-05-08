@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 import api from './Api'
 
-export const useForm = (initialForm,validateForm) => {
+export const usePacientForm = (initialForm,validateForm) => {
     const[form,setForm] = useState (initialForm);
     const[errors,setErrors] = useState ({}) ; //si el objeto no tiene ningun elemento durante la validacion significa que esta todo ok
     const[successRegister,setSuccessRegister] = useState (false);

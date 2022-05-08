@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { useForm } from "./useForm";
+import { usePacientForm } from "./usePacientForm";
 import { Fragment } from "react";
 
 const initialForm = {
@@ -54,7 +54,7 @@ const PacientForm = () => {
         handleChange,
         handleBlur,
         handleSubmit
-    } = useForm(initialForm,validationsForm);
+    } = usePacientForm(initialForm,validationsForm);
 
     const navigate = useNavigate();
     const reload = () => {
