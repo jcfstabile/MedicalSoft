@@ -5,7 +5,7 @@ import axios from 'axios'
 const host = 'http://localhost:7777';
 
 
-function agregarPaciente( payload){
+function agregarPaciente(payload){
     return axios.post(host.concat('/api/paciente'), payload)
 }
 
@@ -16,8 +16,16 @@ function login (datosUsuario){
 function buscarPaciente(dniSearch) {
     const url = host.concat('/api/paciente?dni=' + dniSearch)
     return axios
-      .get(url)
-      .then(response => response.data)
+        .get(url)
+        .then(response => response.data)
+}
+
+function buscarTurnos(){
+    const url = host.concat('/api/turnos')
+    return axios
+        .get(url)
+        .then(response => response.data)
+        .catch(error => console.log(error))
 }
 
 export default{

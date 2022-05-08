@@ -13,7 +13,7 @@ const InitalData = {
     telefono : ""
 }
 
-const BusquedaComponent = () =>{
+const BusquedaComponent = ({activarModal}) =>{
     const [search,setSearch] = useState (initialForm)
     const [datos,setDatos] = useState (InitalData)
     const [error,setError] = useState ("")
@@ -31,10 +31,6 @@ const BusquedaComponent = () =>{
         }catch (error) {
             console.log(error)
         };
-    }
-
-    const buscarTurno = () => {
-        
     }
 
     const handleChange = (e) => {
@@ -70,7 +66,7 @@ const BusquedaComponent = () =>{
                     <input value={search} onChange={handleChange} onBlur = {handleBlur} class="inputD" type="number" name="dni" id="dni" />
                     <button className = "boton-buscar" type="submit" id="btn-submit" onClick={buscarPaciente}>BUSCAR</button>
                 </div>
-                {<p className = "errorMsgBuscarPac">"No hay paciente con el DNI ingresado"</p>}
+                {error?<p className = "errorMsgBuscarPac">{error}</p>:null}
             </div>
             <div className="datosTraidos">
                 <p>DNI: <p>{datos.dni}</p></p>
@@ -80,8 +76,7 @@ const BusquedaComponent = () =>{
             </div>
             <div className="botones-buscarPaciente">
                 {datos.dni == "" 
-                ? ""
-                : <button className = "boton-buscar" type="submit" onClick={buscarTurno}>BUSCAR TURNO</button>
+                ?<button className = "boton-buscar" type="submit" onClick={()=>activarModal(true)}>BUSCAR TURNO</button>:""
                 }
             </div>
         </Fragment> 

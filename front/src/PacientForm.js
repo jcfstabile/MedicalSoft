@@ -66,7 +66,7 @@ const PacientForm = () => {
            <form className="datosPaciente" onSubmit={handleSubmit}>
                 <h3> AGREGAR  PACIENTE</h3>
                 <br></br>
-                
+                <br></br>
                 <br/>
                 <label for="dni"className="labelAggPaciente">D.N.I</label>
                 {errors.dni && <FontAwesomeIcon icon={faCircleXmark} className="errorIcon"/>}
