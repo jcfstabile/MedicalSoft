@@ -24,6 +24,11 @@ mysqldump -d -u root -p --databases MedicalSoft --result-file=MedicalSoft.sql
 mysql -e "source MedicalSoft.sql" MedicalSoft
 ```
 
+#### La tabla Turnos hardcodeada se puede cargar con
+
+```
+mysql -e "source Turnos.sql" -u root -p
+```
 
 
 #### Para comprobar la configuración del repositorio:

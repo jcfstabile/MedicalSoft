@@ -3,7 +3,7 @@ import { BrowserRouter , Routes, Route, Link } from "react-router-dom";
 import Login from './Login.js'
 import Home from './Home.js'
 import AgregarPaciente from './AgregarPaciente.js'
-import BuscarPaciente from './BuscarPaciente.js'
+import BuscarPaciente from "./BuscarPaciente";
 
 function App (){
 

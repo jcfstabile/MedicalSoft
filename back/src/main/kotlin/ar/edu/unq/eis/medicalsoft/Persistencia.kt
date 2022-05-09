@@ -113,4 +113,40 @@ class Persistencia {
         )
     }
 
+    fun updateTurno(fecha : String, hora : String, dni : String) : Int {
+        return sqlUpdate(
+            """
+                UPDATE Turnos
+                SET dni = '${dni}'
+                WHERE fecha = '${fecha}' AND hora = '${hora}';
+            """.trimIndent()
+        )
+    }
+
+    fun addTurno(fecha : String, hora : String, dni : String) : Int {
+        return sqlUpdate(
+            """
+                INSERT INTO Turnos (dni, fecha, hora)
+                VALUES('${dni}', '${fecha}', '${hora}');
+            """.trimIndent()
+        )
+    }
+
+    fun getTurnosDisponibles() : Turnos {
+        var turnos : Array<TurnoDisponible> = arrayOf()
+        val rs = sqlQuery(
+            """
+                SELECT * FROM Turnos 
+                WHERE dni LIKE "";
+            """.trimIndent()
+        )
+
+        while (rs!!.next()) {
+            //turnos += TurnoDisponible(rs!!.getString("fecha"), rs!!.getString("hora"), rs!!.getString("dni"))
+            turnos += TurnoDisponible(rs!!.getString("fecha"), rs!!.getString("hora"))
+        }
+
+       return (Turnos(turnos))
+    }
+
 }

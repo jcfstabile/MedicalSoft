@@ -7,6 +7,7 @@
 }
 
 .container {
+    color: white;
     background-image: url("/public/images/vectorFondoMedico.png");
     background-size: 300px;
     background-repeat: repeat;

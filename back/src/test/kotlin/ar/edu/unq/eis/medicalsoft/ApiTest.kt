@@ -7,6 +7,47 @@ import org.junit.jupiter.api.Assertions.*
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ApiTest : SetUpTest() {
 
+
+    @Test
+    fun `Turnos endpoint Asignar un turno`(){
+        db.addTurno("8888-12-31", "11:22:00", "")
+        val response_before = khttp.get(
+            url = "http://localhost:7777/api/turnos",
+        )
+        assertEquals(200, response_before.statusCode)
+        assertEquals("[{\"fecha\":\"9999-12-31\",\"hora\":\"11:22:00\"},{\"fecha\":\"9999-10-20\",\"hora\":\"01:59:00\"},{\"fecha\":\"8888-12-31\",\"hora\":\"11:22:00\"}]"
+            , response_before.jsonObject["turnos"].toString())
+
+
+        val response = khttp.patch(
+            url = "http://localhost:7777/api/turnos",
+            json = mapOf("fecha" to "8888-12-31",
+                         "hora" to "11:22:00",
+                         "dni" to "12345678"
+                )
+        )
+        assertEquals(204, response.statusCode)
+
+
+        val response_after = khttp.get(
+            url = "http://localhost:7777/api/turnos",
+        )
+        assertEquals(200, response_after.statusCode)
+        assertEquals("[{\"fecha\":\"9999-12-31\",\"hora\":\"11:22:00\"},{\"fecha\":\"9999-10-20\",\"hora\":\"01:59:00\"}]"
+            , response_after.jsonObject["turnos"].toString())
+    }
+
+    @Test
+    fun `Turnos endpoint todos los turnos disponibles`(){
+        val response = khttp.get(
+            url = "http://localhost:7777/api/turnos",
+        )
+
+        assertEquals(200, response.statusCode)
+        assertEquals("[{\"fecha\":\"9999-12-31\",\"hora\":\"11:22:00\"},{\"fecha\":\"9999-10-20\",\"hora\":\"01:59:00\"}]"
+                   , response.jsonObject["turnos"].toString())
+    }
+
     @Test
     fun `Login endpoint usuario esta autorizado`(){
         val response = khttp.post(

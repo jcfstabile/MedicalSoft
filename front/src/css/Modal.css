@@ -1,0 +1,41 @@
+.overlayModal{
+    padding: 40px;
+    width: 100vw;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedorModal{
+    width: 850px;
+    height: 550px;
+    min-height: 100px;
+    background:white;
+    position : relative;
+    border-radius: 5px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px; 
+    padding: 20px;
+}
+
+.xCerrarModal{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    border: none;
+    box-shadow: rgba(100,130,130,0.9)2px 3px 4px 2px; 
+    background:#a71930;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 5px;
+}
+
+.xCerrarModal:hover{
+    background: grey
+}
