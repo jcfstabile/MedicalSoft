@@ -8,27 +8,27 @@ import {faRectangleList} from "@fortawesome/free-solid-svg-icons"
 import Api from "./Api";
 
 const BuscarPaciente = () =>{
+    const initialTurno = {
+        turnos: [{
+            fecha: "",
+            hora: ""
+        }]
+    }
+
     const[estadoModal,setEstadoModal] = useState(false)
-    const[turnos,setTurnos] = useState([])
+    const[turnos,setTurnos] = useState(initialTurno)
     const[turnoElegido,setTurnoElegido] = useState("")
     const[asignacionExitosa,setAsignacionExitosa] = useState(false)
 
-
-    const buscarTurno = async () => {
-        try {
-            const response = await Api.buscarTurnos();
-            setTurnos(response);
-            console.log(turnos)
-            console.log(response)
-        } catch (error) {
-            console.log("No hay turnos")
-            setTurnos("");
-        };
-    }
-
-    useEffect(()=>{
-        buscarTurno();
-    }, [])
+    useEffect(() => {
+        const buscarTurno = async () => {
+          const response = await Api.buscarTurnos();
+          setTurnos(response)
+          console.log(turnos);
+        }
+      
+        buscarTurno()
+      }, [estadoModal])
 
     const reservarTurno = () =>{
         Api.asignarTurno(turnoElegido).then((res) => {
@@ -63,22 +63,18 @@ const BuscarPaciente = () =>{
                         <th>fecha</th>
                         <th>hora</th>
                     </tr>
-                    <tbody>
-                        {/* <ul>
-                        {turnos.map((turno) => {
-                            <li>turno</li>
-                        })}
-                        </ul> */}
-                        {/* {turnos.map( (value,i) => {
-                            return(
-                                <tr key={i}>
-                                    <td>{value.fecha}</td>
-                                    <td>{value.hora}</td>
-                                </tr>                    
+                    {
+                    <div className="turnosList">
+                        {
+                            turnos.turnos.map(t =>
+                                <div className="turnoLine">
+                                    <p>{t.fecha}</p>
+                                    <p>{t.hora}</p>
+                                </div>
                             )
-                            }
-                        )} */}
-                    </tbody>
+                        }
+                    </div>
+                    }
                 </table>
                 {asignacionExitosa? <p className="msgAsignarTurno">El turno fue asignado</p>:null}
                 <div className="grupoBotonesModal">
