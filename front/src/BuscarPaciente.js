@@ -9,19 +9,26 @@ import Api from "./Api";
 
 const BuscarPaciente = () =>{
     const[estadoModal,setEstadoModal] = useState(false)
-    const[turnos,setTurnos] = useState({})
-    const[turnoElegido,setTurnoElegido] = useState({})
+    const[turnos,setTurnos] = useState([])
+    const[turnoElegido,setTurnoElegido] = useState("")
     const[asignacionExitosa,setAsignacionExitosa] = useState(false)
 
 
     const buscarTurno = async () => {
-        const response= await Api.buscarTurnos()
-        setTurnos(turnos)
+        try {
+            const response = await Api.buscarTurnos();
+            setTurnos(response);
+            console.log(turnos)
+            console.log(response)
+        } catch (error) {
+            console.log("No hay turnos")
+            setTurnos("");
+        };
     }
 
     useEffect(()=>{
         buscarTurno();
-    },[])
+    }, [])
 
     const reservarTurno = () =>{
         Api.asignarTurno(turnoElegido).then((res) => {
@@ -45,7 +52,7 @@ const BuscarPaciente = () =>{
             <hr/>
             <div className = "bodyAggPac2">
                 <div className="titulo">BUSCAR PACIENTE</div>
-                <BusquedaComponent activarModal={setEstadoModal}/>
+                <BusquedaComponent activarModal={setEstadoModal} />
             </div>
             <Modal estado={estadoModal} cambiarEstado={setEstadoModal}>
                 <FontAwesomeIcon icon={faRectangleList} className="turnosIcon"/>
@@ -57,20 +64,26 @@ const BuscarPaciente = () =>{
                         <th>hora</th>
                     </tr>
                     <tbody>
-                        {/* {turnos.turnos.map( (value,i) => {
+                        {/* <ul>
+                        {turnos.map((turno) => {
+                            <li>turno</li>
+                        })}
+                        </ul> */}
+                        {/* {turnos.map( (value,i) => {
                             return(
                                 <tr key={i}>
                                     <td>{value.fecha}</td>
                                     <td>{value.hora}</td>
                                 </tr>                    
                             )
-                        })} */}
+                            }
+                        )} */}
                     </tbody>
                 </table>
                 {asignacionExitosa? <p className="msgAsignarTurno">El turno fue asignado</p>:null}
                 <div className="grupoBotonesModal">
                     <button className="aceptarModal" type="submit" onClick={reservarTurno}>aceptar</button>
-                    <button className="cancelarModal">cancelar</button>
+                    <button className="cancelarModal" onClick ={()=>setEstadoModal(false)}>cancelar</button>
                 </div>
             </Modal>
         </div>

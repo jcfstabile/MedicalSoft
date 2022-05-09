@@ -74,7 +74,7 @@ const BusquedaComponent = ({activarModal}) =>{
             <div className="botones-buscarPaciente">
                 {datos.dni == "" 
                 ? ""
-                : <button className = "boton-buscar" type="submit" onClick={()=>activarModal(true)}>BUSCAR TURNO</button>
+                : <button className = "boton-buscar" type="submit" onClick={()=> activarModal(true)}>BUSCAR TURNO</button>
                 }
             </div>
         </Fragment> 

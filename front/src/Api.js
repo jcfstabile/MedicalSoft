@@ -25,11 +25,11 @@ function buscarTurnos(){
     return axios
         .get(url)
         .then(response => response.data)
-        .catch(error => console.log(error))
 }
 
 export default{
     agregarPaciente,
     login,
-    buscarPaciente
+    buscarPaciente,
+    buscarTurnos
 }
