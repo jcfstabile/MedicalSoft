@@ -21,6 +21,12 @@ object MedicalSoft {
     internal lateinit var app : Javalin
     internal lateinit var base : Persistencia
 
+    @JvmStatic fun main(args: Array<String>) {
+        val persistencia = Persistencia()
+        persistencia.useProductionDB()
+        start(persistencia)
+    }
+
     @JvmStatic fun start( _base : Persistencia) {
         base = _base
 
@@ -91,10 +97,4 @@ object MedicalSoft {
         }
 
     }
-}
-
-fun main() {
-    val persistencia = Persistencia()
-    persistencia.useProductionDB()
-    MedicalSoft.start(persistencia)
 }
