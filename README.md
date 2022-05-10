@@ -29,6 +29,38 @@ mysql -e "source Turnos.sql" -u root -p
 ```
 
 
+## Se puede generar un jar del back de MedicalSoft
+
+
+
+##### Configurar el artefacto
+
+File -> Project Structure -> Artifacts -> + -> JAR -> From modules with dependencies
+
+En el campo Main Class _click_ en la carpeta.
+
+Esperar que termine el ***() Searching...*** en Search by Name
+
+Seleccionar MedicalSoft -> Ok -> Ok -> Apply -> Ok
+
+##### Construir el artefacto
+
+Build -> Build Artifacts...
+Seleccionar zero.jar -> (Action)Build
+
+El ***jar*** quedara construido en ***back/out/artifacts/zero_jar*** como ***zero.jar***
+
+##### Ejecutar el artefacto
+
+Desde el directorio back/out/artifacts/zero_jar
+
+```
+java -jar zero.jar
+```
+
+
+[Referiencia](https://www.jetbrains.com/help/idea/compiling-applications.html#package_into_jar)
+
 #### Para comprobar la configuración del repositorio:
 
 Clonar con
