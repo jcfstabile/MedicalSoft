@@ -96,5 +96,12 @@ object MedicalSoft {
             ctx.status(204)
         }
 
+        app.get("/api/turno") { ctx ->
+            val dni = ctx.queryParam("dni")
+            val turno = TurnosService(base).obtenerTurnoAsignado(dni)
+            ctx.status(200)
+            ctx.json(turno)
+        }
+
     }
 }

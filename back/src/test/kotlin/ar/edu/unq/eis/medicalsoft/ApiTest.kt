@@ -7,6 +7,33 @@ import org.junit.jupiter.api.Assertions.*
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ApiTest : SetUpTest() {
 
+    @Test
+    fun `Turno endpoint sin turno asignado a paciente`(){
+        db.addTurno("8888-12-31", "11:22:00", "12341234")
+
+        val payload = mapOf( "dni"  to  "88880000")
+        val response = khttp.get(
+            url = "http://localhost:7777/api/turno",
+            params=payload
+        )
+
+        assertEquals(200, response.statusCode)
+        assertEquals("null", response.jsonObject.get("turno").toString())
+    }
+
+    @Test
+    fun `Turno endpoint con turno asignado a paciente`(){
+        db.addTurno("8888-12-31", "11:22:00", "87654321")
+
+        val payload = mapOf( "dni"  to  "87654321")
+        val response = khttp.get(
+            url = "http://localhost:7777/api/turno",
+            params=payload
+        )
+
+        assertEquals(200, response.statusCode)
+        assertEquals("{\"fecha\":\"8888-12-31\",\"hora\":\"11:22:00\"}", response.jsonObject.get("turno").toString())
+    }
 
     @Test
     fun `Turnos endpoint Asignar un turno`(){
