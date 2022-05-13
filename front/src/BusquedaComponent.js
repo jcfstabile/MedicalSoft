@@ -13,7 +13,7 @@ const InitalData = {
     telefono : ""
 }
 
-const BusquedaComponent = ({activarModal}) =>{
+const BusquedaComponent = ({activarModal, devolverDni}) =>{
     const [search,setSearch] = useState (initialForm)
     const [datos,setDatos] = useState (InitalData)
     const [error,setError] = useState ("")
@@ -22,7 +22,6 @@ const BusquedaComponent = ({activarModal}) =>{
         try {
             const response = await Api.buscarPaciente(search)
             setDatos(response)
-            
         } catch (error) {
             setError("No hay paciente con el DNI ingresado")
             setTimeout(() => setError(""), 4000);
@@ -32,14 +31,12 @@ const BusquedaComponent = ({activarModal}) =>{
 
     const handleChange = (e) => {
         let regexDNI = /^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$/; // 4 a 10 digitos.
-        console.log(e.target.value);
         setSearch(e.target.value);
         
         if(!search.trim() || !regexDNI.test(search.trim())){
             setError("EL CAMPO D.N.I NO TIENE UN FORMATO CORRECTO (EJEMPLO:000000000")
         }else{
             setError("")
-            console.log("no hay ningun error")
         }
     };
 
@@ -50,8 +47,12 @@ const BusquedaComponent = ({activarModal}) =>{
             setError("EL CAMPO D.N.I NO TIENE UN FORMATO CORRECTO (EJEMPLO:000000000")
         }else{
             setError("")
-            console.log("no hay ningun error")
         }
+    }
+
+    const clickBuscarTurno = (e) => {
+        activarModal(true);
+        devolverDni(datos.dni);
     }
 
     return(
@@ -74,7 +75,7 @@ const BusquedaComponent = ({activarModal}) =>{
             <div className="botones-buscarPaciente">
                 {datos.dni == "" 
                 ? ""
-                : <button className = "boton-buscar" type="submit" onClick={()=> activarModal(true)}>BUSCAR TURNO</button>
+                : <button className = "boton-buscar" type="submit" onClick={clickBuscarTurno}>BUSCAR TURNO</button>
                 }
             </div>
         </Fragment> 
