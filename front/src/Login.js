@@ -15,7 +15,6 @@ const Login = (props) => {
         }
         Api.login (datosUsuario)
         .then( (response)=>{
-            console.log(response);
             setRedirect(true)
         })
     }

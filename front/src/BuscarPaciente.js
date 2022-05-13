@@ -15,28 +15,45 @@ const BuscarPaciente = () =>{
         }]
     }
 
+    const initialTurnoElegido = {
+        fecha: "",
+        hora: "",
+        dni: ""
+    }
+    
     const[estadoModal,setEstadoModal] = useState(false)
     const[turnos,setTurnos] = useState(initialTurno)
-    const[turnoElegido,setTurnoElegido] = useState("")
+    const[turnoElegido,setTurnoElegido] = useState(initialTurnoElegido)
     const[asignacionExitosa,setAsignacionExitosa] = useState(false)
+    const [dniBuscado, setDniBuscado] = useState("")
 
     useEffect(() => {
         const buscarTurno = async () => {
           const response = await Api.buscarTurnos();
           setTurnos(response)
-          console.log(turnos);
         }
       
         buscarTurno()
       }, [estadoModal])
 
-    const reservarTurno = () =>{
-        Api.asignarTurno(turnoElegido).then((res) => {
-            setAsignacionExitosa(true)
-            setTimeout(() => setAsignacionExitosa(false), 5000);
-        })
-        .catch((error) => {
-            console.log(error.response)    
+    const seleccionarTurno = (fecha, hora) => {
+        const turno = {
+            fecha: fecha,
+            hora: hora,
+            dni: dniBuscado
+        }
+        setTurnoElegido(turno)
+    }
+
+    const cancelarModal = () => {
+        setEstadoModal(false);
+        setAsignacionExitosa(false);
+    }
+
+    const reservarTurno = (e) => {
+        Api.asignarTurno(turnoElegido)
+        .then(() => {
+            setAsignacionExitosa(true);
         })
     }
 
@@ -52,7 +69,9 @@ const BuscarPaciente = () =>{
             <hr/>
             <div className = "bodyAggPac2">
                 <div className="titulo">BUSCAR PACIENTE</div>
-                <BusquedaComponent activarModal={setEstadoModal} />
+                <BusquedaComponent 
+                    activarModal={setEstadoModal} 
+                    devolverDni={setDniBuscado} />
             </div>
             <Modal estado={estadoModal} cambiarEstado={setEstadoModal}>
                 <FontAwesomeIcon icon={faRectangleList} className="turnosIcon"/>
@@ -65,9 +84,9 @@ const BuscarPaciente = () =>{
                     </tr>
                     {
                     <div className="turnosList">
-                        {
+                        {   
                             turnos.turnos.map(t =>
-                                <div className="turnoLine">
+                                <div className="turnoLine" onClick={(e) => seleccionarTurno(t.fecha, t.hora)} >
                                     <p>{t.fecha}</p>
                                     <p>{t.hora}</p>
                                 </div>
@@ -79,7 +98,7 @@ const BuscarPaciente = () =>{
                 {asignacionExitosa? <p className="msgAsignarTurno">El turno fue asignado</p>:null}
                 <div className="grupoBotonesModal">
                     <button className="aceptarModal" type="submit" onClick={reservarTurno}>aceptar</button>
-                    <button className="cancelarModal" onClick ={()=>setEstadoModal(false)}>cancelar</button>
+                    <button className="cancelarModal" onClick ={cancelarModal}>cancelar</button>
                 </div>
             </Modal>
         </div>
