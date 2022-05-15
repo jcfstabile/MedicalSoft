@@ -27,6 +27,7 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
     const [error,setError] = useState ("")
     const [errorNoTurno,setErrorNoTurno] = useState (false)
     const [turno,setTurno] = useState (InitialTurno)
+    const [apagarBoton,SetApagarBoton] = useState(false)
 
     const buscarPaciente = async (e) => {
         try {
@@ -44,8 +45,10 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
         try {
             const response = await Api.buscarTurno(search)
             setTurno (response)
-            setErrorNoTurno(false)        
+            setErrorNoTurno(false)
+            SetApagarBoton(false)        
         } catch (error) {
+            SetApagarBoton(true)
             setErrorNoTurno(true)
         }
     }
@@ -104,9 +107,9 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
                 </p>
             </div>
             <div className="botones-buscarPaciente">
-                {datos.dni == "" 
+                {!datos.dni == "" 
                 ? ""
-                : <button className = "buscarTurnobtn" type="submit" onClick={clickBuscarTurno}><FontAwesomeIcon icon={faRectangleList} className="turnosBtnIcon"/>BUSCAR TURNO</button>
+                : <button className = "buscarTurnobtn" type="submit" disabled={apagarBoton} onClick={clickBuscarTurno}><FontAwesomeIcon icon={faRectangleList} className="turnosBtnIcon"/>BUSCAR TURNO</button>
                 }
             </div>
         </Fragment> 

@@ -68,8 +68,8 @@ const BuscarPaciente = () =>{
                 <img src='/images/logoNombre.png' alt='' width="100%" />
             </div>
             <hr/>
+            <div className="titulo">BUSCAR PACIENTE</div>
             <div className = "bodyAggPac2">
-                <div className="titulo">BUSCAR PACIENTE</div>
                 <BusquedaComponent 
                     activarModal={setEstadoModal} 
                     devolverDni={setDniBuscado} />
