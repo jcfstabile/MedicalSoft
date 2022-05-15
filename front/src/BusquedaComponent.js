@@ -25,7 +25,6 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
     const [search,setSearch] = useState (initialForm)
     const [datos,setDatos] = useState (initalData)
     const [error,setError] = useState ("")
-    const [errorNoTurno,setErrorNoTurno] = useState (false)
     const [turno,setTurno] = useState (InitialTurno)
     const [apagarBoton,SetApagarBoton] = useState(false)
 
@@ -47,11 +46,9 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
         try {
             const response = await Api.buscarTurno(search)
             setTurno (response)
-            setErrorNoTurno(false)
             SetApagarBoton(false)
         } catch (error) {
             SetApagarBoton(true)
-            setErrorNoTurno(true)
         }
     }
 
