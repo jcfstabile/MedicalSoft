@@ -107,7 +107,7 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
                 </p>
             </div>
             <div className="botones-buscarPaciente">
-                {!datos.dni == "" 
+                {datos.dni == "" 
                 ? ""
                 : <button className = "buscarTurnobtn" type="submit" disabled={apagarBoton} onClick={clickBuscarTurno}><FontAwesomeIcon icon={faRectangleList} className="turnosBtnIcon"/>BUSCAR TURNO</button>
                 }
