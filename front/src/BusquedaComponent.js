@@ -16,8 +16,8 @@ const initalData = {
 
 const InitialTurno ={
     turno:{
-        fecha : "9999-12-31",
-        hora : "11:22:99"
+        fecha : "",
+        hora : ""
     }
 }
 
