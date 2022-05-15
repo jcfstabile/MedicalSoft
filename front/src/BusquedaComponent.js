@@ -32,11 +32,13 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
         try {
             const response = await Api.buscarPaciente(search)
             setDatos(response)
+            setTurno(InitialTurno)
             obtenerTurno()
         } catch (error) {
             setError("No hay paciente con el DNI ingresado")
             setTimeout(() => setError(""), 4000);
             setDatos(initalData);
+            setTurno(InitialTurno)
         };
     }
 
@@ -44,7 +46,8 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
         try {
             const response = await Api.buscarTurno(search)
             setTurno (response)
-            setErrorNoTurno(false)        
+            setErrorNoTurno(false)
+            console.log(turno)
         } catch (error) {
             setErrorNoTurno(true)
         }
@@ -99,9 +102,12 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
                 <hr className="datosHr"/>
 
                 <p>TURNO:
-                {errorNoTurno? <p>Sin turno</p>: null}
-                {!turno? <p>fecha:{turno.turno.fecha},hora:{turno.turno.hora}</p> : null}
+                {(turno.turno != null && turno.turno.fecha != ""
+                    ? <p>fecha: {turno.turno.fecha}, hora: {turno.turno.hora}</p> 
+                    : <p>Sin turno</p>)
+                }
                 </p>
+                
             </div>
             <div className="botones-buscarPaciente">
                 {datos.dni == "" 
