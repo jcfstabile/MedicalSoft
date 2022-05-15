@@ -9,6 +9,7 @@
     background-size:100vw;
     height: 100vh;
     width: 100vw;
+    
 }
 
 .flecha {
@@ -35,11 +36,11 @@
 }
 
 .bodyAggPac2{
+    margin-top:-25px;
     width:100vw ;
     height:10vh;
     display: flex;
     flex-direction: column;
-    margin-top: -10px;
 }
 
 hr { 
