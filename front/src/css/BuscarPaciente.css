@@ -169,6 +169,7 @@ label {
     display: flex;
     flex-direction: row;
     margin-bottom: -10px;
+    align-items: center;
 }
 
 .datosTraidos p p {
