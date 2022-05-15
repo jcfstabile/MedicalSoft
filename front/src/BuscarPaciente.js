@@ -28,14 +28,14 @@ const BuscarPaciente = () =>{
     const [dniBuscado, setDniBuscado] = useState("")
 
     useEffect(() => {
-        const buscarTurno = async () => {
-          const response = await Api.buscarTurnos();
-          setTurnos(response)
+        const obtenerTurnos = async () => {
+            const response = await Api.buscarTurnos();
+            setTurnos(response)
         }
-      
-        buscarTurno()
-      }, [estadoModal])
-
+        
+        obtenerTurnos()
+    }, [estadoModal])
+    
     const seleccionarTurno = (fecha, hora) => {
         const turno = {
             fecha: fecha,
@@ -56,6 +56,7 @@ const BuscarPaciente = () =>{
             setAsignacionExitosa(true);
         })
     }
+
 
     return (
         <Fragment>

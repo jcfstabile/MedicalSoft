@@ -31,6 +31,13 @@ function buscarTurnos(){
         .then(response => response.data)
 }
 
+function buscarTurno(dni){
+    const url = host.concat('api/turno?dni='+dni)
+    return axios
+        .get(url)
+        .then(response => response.data)
+}
+
 export default{
     agregarPaciente,
     login,
