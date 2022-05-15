@@ -36,9 +36,10 @@
 
 .bodyAggPac2{
     width:100vw ;
-    height: calc(100vh - 53px);
+    height:10vh;
     display: flex;
     flex-direction: column;
+    margin-top: -10px;
 }
 
 hr { 
@@ -90,9 +91,10 @@ hr {
 }
 
 .search {
-    padding:0%;
+    padding:10px;
     background-color:black;
     width:50%;
+    height: 200px;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
@@ -132,7 +134,7 @@ label {
 
 .datosTraidos {
     width:50%;
-    background-color: #ffffff;
+    background-color: white!important;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -148,14 +150,16 @@ label {
 }
 
 .datosTitle{
-    font-size:25px !important;
+    font-size:24px !important;
     align-self: center;
+    margin-top:-30px;
+    
 }
 
 .datosHr
     { display: block; height: 1px;
-        border: 0; border-top: 1px solid rgb(110, 107, 107) !important;
-        margin: 0; padding: 0; }
+        border: 0; border-top: 0.1px solid rgb(189, 183, 183) !important;
+        margin: 0; padding: 0;box-shadow: rgba(94, 92, 92, 0.9)2px 1px 20px 0.4px; }
 
 
 .datosTraidos p {
@@ -168,8 +172,9 @@ label {
 }
 
 .datosTraidos p p {
-    text-transform: none;
-    margin-left: 10px;
+    margin-bottom:auto;
+    font-size: 19px;
+    color:black !important;
 }
 
 .errorMsgBuscarPac{
@@ -254,6 +259,13 @@ label {
     padding:1px;
     color: #6b0e0e !important;
 }
+.turnosBtnIcon{
+    width:17px ;
+    height:17px;
+    padding:1px;
+    margin-bottom: 5px;
+    margin-right: 2px;
+}
 .botones-buscarPaciente {
     margin-top: 10px;
     display: flex;
@@ -322,6 +334,10 @@ label {
 }
 
 .buscarTurnobtn{
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: 10px;
     width: 200px;
     height: 40px;

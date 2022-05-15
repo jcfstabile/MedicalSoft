@@ -1,6 +1,7 @@
 import {Fragment, useState } from "react";
 import Api from "./Api";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRectangleList } from "@fortawesome/free-solid-svg-icons";
 
 const initialForm = {
     dni : ""
@@ -15,8 +16,8 @@ const initalData = {
 
 const InitialTurno ={
     turno:{
-        fecha :"",
-        hora : ""
+        fecha : "9999-12-31",
+        hora : "11:22:99"
     }
 }
 
@@ -97,14 +98,15 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
                 <p>TELEFONO: <p>{datos.telefono}</p></p>
                 <hr className="datosHr"/>
 
-                <p>TURNO:</p>
+                <p>TURNO:
                 {errorNoTurno? <p>Sin turno</p>: null}
-                {!turno.turno.fecha === ""? <p>{turno.turno.fecha},{turno.turno.hora}</p> : null}
+                {!turno? <p>fecha:{turno.turno.fecha},hora:{turno.turno.hora}</p> : null}
+                </p>
             </div>
             <div className="botones-buscarPaciente">
                 {datos.dni == "" 
                 ? ""
-                : <button className = "buscarTurnobtn" type="submit" onClick={clickBuscarTurno}>BUSCAR TURNO</button>
+                : <button className = "buscarTurnobtn" type="submit" onClick={clickBuscarTurno}><FontAwesomeIcon icon={faRectangleList} className="turnosBtnIcon"/>BUSCAR TURNO</button>
                 }
             </div>
         </Fragment> 
