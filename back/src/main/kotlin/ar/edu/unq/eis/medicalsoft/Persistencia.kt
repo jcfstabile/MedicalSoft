@@ -133,7 +133,7 @@ class Persistencia {
     }
 
     fun getTurnosDisponibles() : Turnos {
-        var turnos : Array<TurnoDisponible> = arrayOf()
+        var turnos : Array<FechaHora> = arrayOf()
         val rs = sqlQuery(
             """
                 SELECT * FROM Turnos 
@@ -142,11 +142,25 @@ class Persistencia {
         )
 
         while (rs!!.next()) {
-            //turnos += TurnoDisponible(rs!!.getString("fecha"), rs!!.getString("hora"), rs!!.getString("dni"))
-            turnos += TurnoDisponible(rs!!.getString("fecha"), rs!!.getString("hora"))
+            turnos += FechaHora(rs!!.getString("fecha"), rs!!.getString("hora"))
         }
 
        return (Turnos(turnos))
+    }
+
+    fun getTurnoPara(dni: String?): TurnoAsignado {
+        val rs = sqlQuery(
+            """
+                SELECT * FROM Turnos 
+                WHERE dni LIKE '${dni}';
+            """.trimIndent()
+        )
+
+        return if (rs!!.next())
+                    TurnoAsignado(FechaHora(rs!!.getString("fecha"), rs!!.getString("hora")))
+               else
+                    TurnoAsignado(null)
+
     }
 
 }
