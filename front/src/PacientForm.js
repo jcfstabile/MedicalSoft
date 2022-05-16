@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { useForm } from "./useForm";
+import { usePacientForm } from "./usePacientForm";
 import { Fragment } from "react";
 
 const initialForm = {
@@ -54,7 +54,7 @@ const PacientForm = () => {
         handleChange,
         handleBlur,
         handleSubmit
-    } = useForm(initialForm,validationsForm);
+    } = usePacientForm(initialForm,validationsForm);
 
     const navigate = useNavigate();
     const reload = () => {
@@ -63,10 +63,10 @@ const PacientForm = () => {
 
     return(
         <Fragment>
-           <form className="datosPaciente" onSubmit={handleSubmit} >
+           <form className="datosPaciente" onSubmit={handleSubmit}>
                 <h3> AGREGAR  PACIENTE</h3>
                 <br></br>
-                
+                <br></br>
                 <br/>
                 <label for="dni"className="labelAggPaciente">D.N.I</label>
                 {errors.dni && <FontAwesomeIcon icon={faCircleXmark} className="errorIcon"/>}
@@ -76,7 +76,7 @@ const PacientForm = () => {
                     <div className="nombreg">
                         <label for="nombre" className="labelAggPaciente">NOMBRE</label>
                         {errors.nombre && <FontAwesomeIcon icon={faCircleXmark} className="errorIcon"/>}
-                        <input type="text" name="nombre" id="nombre" onBlur={handleBlur} onChange={handleChange} value={form.name} />
+                        <input type="text" name="nombre" id="nombre" onBlur={handleBlur} onChange={handleChange} value={form.name} autoComplete="false"/>
                         {errors.nombre &&<p className="mensajeError">{errors.nombre}</p>}
                     </div>   
                     <div className="apellidog">
@@ -93,7 +93,7 @@ const PacientForm = () => {
                 {errors.telefono &&<p className="mensajeError">{errors.telefono}</p>}
                 <br></br>
                 <div className="botonesAggPac">
-                    <button className = "agregarAggPac" type="submit" id="btn-submit" >AGREGAR</button>
+                    <button className = "agregarAggPac" type="submit" id="btn-submit">AGREGAR</button>
                     <button className ="cancelarAggPac" onClick={reload}>CANCELAR</button>
                 </div>
                 {successRegister && (<div className="feedBackMsg"><FontAwesomeIcon icon={faCheckCircle} className ="feedbackIcon"/><p className="msgFeedback">Paciente agregado exitosamente</p></div>)}

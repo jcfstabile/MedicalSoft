@@ -1,5 +1,4 @@
-import React,{Fragment,useState} from "react"
-import Api from "./Api"
+import React,{Fragment} from "react"
 import'./css/AgregarPaciente.css'
 import { Link } from "react-router-dom"
 

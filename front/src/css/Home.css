@@ -5,11 +5,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'League Spartan', sans-serif;
-    color: white;
     text-transform: uppercase;
 }
 
 .contenedor {
+    color:white;
     background-color: #a71930;
     height: 100vh;
     width: 100vw;

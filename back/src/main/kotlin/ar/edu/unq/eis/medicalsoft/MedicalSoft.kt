@@ -78,16 +78,18 @@ object MedicalSoft {
 
         }
 
-    }
-}
+        app.get("/api/turnos") { ctx ->
+            val turnos = TurnosService(base).obtenerTurnosDisponibles()
+            ctx.status(200)
+            ctx.json(turnos)
+        }
 
-class PacienteService(val base : Persistencia) {
-    fun agregar(paciente : Paciente) {
-        base.addPaciente(paciente.dni, paciente.nombre, paciente.apellido, paciente.telefono)
-    }
+        app.patch("/api/turnos") { ctx ->
+            val turnoAsignado = ctx.bodyAsClass(Turno::class.java)
+            TurnosService(base).asignarTurno(turnoAsignado)
+            ctx.status(204)
+        }
 
-    fun obtener(dni: String?) : Paciente {
-        return base.getPaciente(dni!!)
     }
 }
 
