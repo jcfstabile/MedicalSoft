@@ -13,6 +13,10 @@ function login (datosUsuario){
     return axios.post(host.concat('/api/login'),datosUsuario)
 }
 
+function asignarTurno(turno){
+    return axios.patch(host.concat('/api/turnos'), turno)
+}
+
 function buscarPaciente(dniSearch) {
     const url = host.concat('/api/paciente?dni=' + dniSearch)
     return axios
@@ -27,9 +31,18 @@ function buscarTurnos(){
         .then(response => response.data)
 }
 
+function buscarTurno(dni){
+    const url = host.concat('/api/turno?dni='+dni)
+    return axios
+        .get(url)
+        .then(response => response.data)
+}
+
 export default{
     agregarPaciente,
     login,
     buscarPaciente,
-    buscarTurnos
+    buscarTurnos,
+    asignarTurno,
+    buscarTurno
 }
