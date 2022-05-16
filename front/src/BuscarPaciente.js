@@ -86,12 +86,30 @@ const BuscarPaciente = () =>{
                     {
                     <div className="turnosList">
                         {   
-                            turnos.turnos.map(t =>
+                        turnos.turnos.map(t =>
+                            {if(turnoElegido.fecha == t.fecha
+                                && turnoElegido.hora == t.hora) {
+                                return (
+                                    <div className="turnoLine active" onClick={(e) => seleccionarTurno(t.fecha, t.hora)} >
+                                        <p>{t.fecha}</p>
+                                        <p>{t.hora}</p>
+                                    </div>
+                                );
+                            }
+                            else {
+                                return (
                                 <div className="turnoLine" onClick={(e) => seleccionarTurno(t.fecha, t.hora)} >
                                     <p>{t.fecha}</p>
                                     <p>{t.hora}</p>
                                 </div>
-                            )
+                                );
+                            }
+                            }
+                            // <div className="turnoLine" onClick={(e) => seleccionarTurno(t.fecha, t.hora)} >
+                            //     <p>{t.fecha}</p>
+                            //     <p>{t.hora}</p>
+                            // </div>
+                        )
                         }
                     </div>
                     }
