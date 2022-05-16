@@ -26,7 +26,6 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
     const [datos,setDatos] = useState (initalData)
     const [error,setError] = useState ("")
     const [turno,setTurno] = useState (InitialTurno)
-    const [apagarBoton, setApagarBoton] = useState(false)
 
     const buscarPaciente = async (e) => {
         try {
@@ -46,9 +45,7 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
         try {
             const response = await Api.buscarTurno(search)
             setTurno (response)
-            setApagarBoton(false)
         } catch (error) {
-            setApagarBoton(true)
         }
     }
 
