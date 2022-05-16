@@ -1,17 +1,69 @@
 # MedicalSoft
 
-# Product Backlog: [link](https://trello.com/b/4xbNYNMN/medicalsoft)
+## Product Backlog: [link](https://trello.com/b/4xbNYNMN/medicalsoft)
 
-# Repositorio del producto: [link](https://github.com/jcfstabile/MedicalSoft)
+## Repositorio del producto: [link](https://github.com/jcfstabile/MedicalSoft)
 
-# Reporte de seguimiento: [link](https://docs.google.com/document/d/1i-_3sovV7Rmn_SwQJ19DVCtSBIEqLHWkhMZj2OwJzPw/edit)
-
-
+## Reporte de seguimiento: [link](https://docs.google.com/document/d/1i-_3sovV7Rmn_SwQJ19DVCtSBIEqLHWkhMZj2OwJzPw/edit)
 
 
-Para comprobar la configuración del repositorio:
 
-1. clonar con
+### Sobre la base de datos
+
+#### El ddl de la estructura de la base de MedicalSoft se genero con el comando:
+
+```
+mysqldump -d -u root -p --databases MedicalSoft --result-file=MedicalSoft.sql
+```
+
+#### La estructura de la base puede ser replicada con:
+
+```
+mysql -e "source MedicalSoft.sql" MedicalSoft
+```
+
+#### La tabla Turnos hardcodeada se puede cargar con
+
+```
+mysql -e "source Turnos.sql" -u root -p
+```
+
+
+## Se puede generar un jar del back de MedicalSoft
+
+
+
+##### Configurar el artefacto
+
+File -> Project Structure -> Artifacts -> + -> JAR -> From modules with dependencies
+
+En el campo Main Class _click_ en la carpeta.
+
+Esperar que termine el ***() Searching...*** en Search by Name
+
+Seleccionar MedicalSoft -> Ok -> Ok -> Apply -> Ok
+
+##### Construir el artefacto
+
+Build -> Build Artifacts...
+Seleccionar zero.jar -> (Action)Build
+
+El ***jar*** quedara construido en ***back/out/artifacts/zero_jar*** como ***zero.jar***
+
+##### Ejecutar el artefacto
+
+Desde el directorio back/out/artifacts/zero_jar
+
+```
+java -jar zero.jar
+```
+
+
+[Referiencia](https://www.jetbrains.com/help/idea/compiling-applications.html#package_into_jar)
+
+#### Para comprobar la configuración del repositorio:
+
+Clonar con
 
 ```
 git clone https://github.com/jcfstabile/MedicalSoft
@@ -21,17 +73,21 @@ o
 git clone git@github.com:jcfstabile/MedicalSoft.git
 ```
 
-### front
+```
+git checkout master
+```
+
+#### front
 
 ```
 cd front
-npm init
+npm install
 npm start
 ```
 
 ### back
 
-Levantar el servidor MySQL.
+Levantar el servidor MySQL (debe estar instalado).
 
 Arrancar InteliJ IDEA.
 
@@ -45,7 +101,7 @@ Ir al archivo src/main/kotlin/org/example/Hello.kt.
 
 Correr el codigo presionando el triangulo verde de la linea 19 y haciendo _**Run...**_.
 
-## Prueba
+### Prueba
 
 Ir a la pestaña en el navegador: _**React App**_
 
