@@ -34,6 +34,7 @@ const BuscarPaciente = () =>{
         }
         
         obtenerTurnos()
+        setTurnoElegido(initialTurnoElegido)
     }, [estadoModal])
     
     const seleccionarTurno = (fecha, hora) => {
