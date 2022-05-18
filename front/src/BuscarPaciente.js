@@ -106,10 +106,6 @@ const BuscarPaciente = () =>{
                                 );
                             }
                             }
-                            // <div className="turnoLine" onClick={(e) => seleccionarTurno(t.fecha, t.hora)} >
-                            //     <p>{t.fecha}</p>
-                            //     <p>{t.hora}</p>
-                            // </div>
                         )
                         }
                     </div>
