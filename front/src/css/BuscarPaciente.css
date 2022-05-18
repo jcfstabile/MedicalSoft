@@ -381,3 +381,7 @@ label {
     transition: .3s ease all;
     border-radius: 5px;
 }
+
+.edit-btn {
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 import {Fragment, useState } from "react";
 import Api from "./Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRectangleList } from "@fortawesome/free-solid-svg-icons";
+import { faRectangleList, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const initialForm = {
     dni : ""
@@ -75,6 +75,8 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
         devolverDni(datos.dni);
     }
 
+    const esPacienteEncontrado = datos.dni != "";
+
     return(
         datos,
         <Fragment>
@@ -88,13 +90,36 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
             </div>
             <div className="datosTraidos">
                 <p class="datosTitle">Informacion</p>
-                <p>DNI: <p>{datos.dni}</p></p>
+                <p>DNI: 
+                    <p>{datos.dni}</p>
+                </p>
                 <hr className="datosHr"/>
-                <p>NOMBRE: <p>{datos.nombre}</p></p>
+                <p>NOMBRE: 
+                    <p>{datos.nombre}</p>
+                    <p>
+                        {esPacienteEncontrado
+                        ? <button className="edit-btn" type="submit"><FontAwesomeIcon icon={faEdit} className=""/></button>
+                        : ""}
+                    </p>
+                </p>
                 <hr className="datosHr"/>
-                <p>APELLIDO: <p>{datos.apellido}</p></p>
+                <p>APELLIDO: 
+                    <p>{datos.apellido}</p>
+                    <p>
+                        {esPacienteEncontrado
+                        ? <button className="edit-btn" type="submit"><FontAwesomeIcon icon={faEdit} className=""/></button>
+                        : ""}
+                    </p>
+                </p>
                 <hr className="datosHr"/>
-                <p>TELEFONO: <p>{datos.telefono}</p></p>
+                <p>TELEFONO: 
+                    <p>{datos.telefono}</p>
+                    <p>
+                        {esPacienteEncontrado
+                        ? <button className="edit-btn" type="submit"><FontAwesomeIcon icon={faEdit} className=""/></button>
+                        : ""}
+                    </p>
+                </p>
                 <hr className="datosHr"/>
 
                 <p>TURNO:
