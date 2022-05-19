@@ -21,7 +21,8 @@ const InitialTurno ={
     }
 }
 
-const BusquedaComponent = ({activarModal, devolverDni}) =>{
+const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
+                            activarModal, devolverDni}) =>{
     const [search,setSearch] = useState (initialForm)
     const [datos,setDatos] = useState (initalData)
     const [error,setError] = useState ("")
@@ -77,6 +78,11 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
 
     const esPacienteEncontrado = datos.dni != "";
 
+    const recargarPaciente = () => {
+        buscarPaciente();
+        cambiarEstadoBusqueda(false);
+    }
+
     return(
         datos,
         <Fragment>
@@ -88,6 +94,11 @@ const BusquedaComponent = ({activarModal, devolverDni}) =>{
                 </div>
                 {error?<p className = "errorMsgBuscarPac">{error}</p>:null}
             </div>
+            {
+                estadoBusqueda
+                ? recargarPaciente()
+                : ""
+            }
             <div className="datosTraidos">
                 <p class="datosTitle">Informacion</p>
                 <p>DNI: 
