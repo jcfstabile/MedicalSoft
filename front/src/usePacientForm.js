@@ -7,6 +7,7 @@ export const usePacientForm = (initialForm,validateForm) => {
     const[errors,setErrors] = useState ({}) ; //si el objeto no tiene ningun elemento durante la validacion significa que esta todo ok
     const[successRegister,setSuccessRegister] = useState (false);
     const[errorRegister,setErrorRegister] = useState (false);
+    const[noConectionError,setNoConectionError] = useState (false);
 
     //variables que se van a ejecutar en los eventos
     const handleChange = (e) => {
@@ -27,6 +28,7 @@ export const usePacientForm = (initialForm,validateForm) => {
         setErrors(validateForm(form));
         if(errors){
             api.agregarPaciente(form).then((res) => {
+                setForm(initialForm)
                 e.target.reset()
                 setErrors({})
                 setErrorRegister(false)
@@ -34,8 +36,16 @@ export const usePacientForm = (initialForm,validateForm) => {
                 setTimeout(() => setSuccessRegister(false), 5000);
               })
               .catch((error) => {
-                console.log(error.response)    
-                setErrorRegister(true)
+                if(error.response == undefined){
+                    setErrorRegister(false)
+                    setNoConectionError(true)
+                    console.log("el servidor no esta levantado")
+                }
+                else{
+                    setNoConectionError(false)
+                    setErrorRegister(true)
+                    console.log("servidor levantado")
+                }
             })
           } 
         
@@ -46,6 +56,7 @@ export const usePacientForm = (initialForm,validateForm) => {
         errors,
         successRegister,
         errorRegister,
+        noConectionError,
         handleBlur,
         handleChange,
         handleSubmit

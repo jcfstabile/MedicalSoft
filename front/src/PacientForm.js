@@ -51,6 +51,7 @@ const PacientForm = () => {
         errors,
         successRegister,
         errorRegister,
+        noConectionError,
         handleChange,
         handleBlur,
         handleSubmit
@@ -98,6 +99,7 @@ const PacientForm = () => {
                 </div>
                 {successRegister && (<div className="feedBackMsg"><FontAwesomeIcon icon={faCheckCircle} className ="feedbackIcon"/><p className="msgFeedback">Paciente agregado exitosamente</p></div>)}
                 {errorRegister &&(<div className="feedBackMsg"><FontAwesomeIcon icon={faTriangleExclamation} className = "feedbackIcon"/><p className="msgFeedback">No se pudo agregar el paciente porque ya existe</p></div>)}
+                {noConectionError &&(<div className="feedBackMsg"><FontAwesomeIcon icon={faTriangleExclamation} className = "feedbackIcon"/><p className="msgFeedback">No se pudo establecer una conexion con el sistema</p></div>)}
             </form>
         </Fragment>
         
