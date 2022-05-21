@@ -147,4 +147,20 @@ class ApiTest : SetUpTest() {
         )
         assertEquals(422, response.statusCode)
     }
+
+    @Test
+    fun `Paciente endpoint Modificar`(){
+        db.addPaciente("12333444", "Juan", "None", "23232323")
+
+        val response = khttp.patch(
+            url = "http://localhost:7777/api/paciente",
+            json = mapOf( "apellido" to "Paol", "nombre" to  "Join" , "dni"  to  "12333444" , "telefono" to  "55556666")
+        )
+        assertEquals(204, response.statusCode)
+
+        val paciente = db.getPaciente("12333444")
+        assertEquals("Paol", paciente.apellido)
+        assertEquals("Join", paciente.nombre)
+        assertEquals("55556666", paciente.telefono)
+    }
 }

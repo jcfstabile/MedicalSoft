@@ -37,16 +37,6 @@ object MedicalSoft {
         app.stop()
     }
 
-
-//    if (resultset != null) {
-//        try {
-//            resultset.close()
-//        } catch (sqlEx: SQLException) {}
-//
-//        resultset = null
-//    }
-
-
     fun javalinUp() {
 
         app = Javalin.create {
@@ -82,6 +72,12 @@ object MedicalSoft {
                 ctx.status(422)
             }
 
+        }
+
+        app.patch("/api/paciente") { ctx ->
+            val paciente = ctx.bodyAsClass(Paciente::class.java)
+            PacienteService(base).modificar(paciente)
+            ctx.status(204)
         }
 
         app.get("/api/turnos") { ctx ->

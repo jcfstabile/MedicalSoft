@@ -8,4 +8,8 @@ class PacienteService(val base : Persistencia) {
     fun obtener(dni: String?) : Paciente {
         return base.getPaciente(dni!!)
     }
+
+    fun modificar(paciente: Paciente) {
+        base.modPaciente(paciente.dni, paciente.nombre, paciente.apellido, paciente.telefono)
+    }
 }

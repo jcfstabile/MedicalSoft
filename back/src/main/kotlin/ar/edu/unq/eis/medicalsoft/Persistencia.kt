@@ -163,4 +163,13 @@ class Persistencia {
 
     }
 
+    fun modPaciente(dni : String, nombre : String, apellido : String, telefono : String): Int {
+        return sqlUpdate(
+            """
+                UPDATE Pacientes
+                SET nombre = '${nombre}', apellido = '${apellido}', telefono =  '${telefono}'
+                WHERE dni = '${dni}';
+                """
+        )
+    }
 }
