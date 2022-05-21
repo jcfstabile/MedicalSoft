@@ -92,7 +92,7 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
 
     const guardarNombre = (e) => {
         try {
-            Api.asignarTurno(datos)
+            Api.modificarPaciente(datos)
             .then(() => {
                 setModalNombre(false);
                 buscarPaciente();
@@ -111,7 +111,7 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
 
     const guardarApellido = (e) => {
         try {
-            Api.asignarTurno(datos)
+            Api.modificarPaciente(datos)
             .then(() => {
                 setModalApellido(false);
                 buscarPaciente();
@@ -130,7 +130,7 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
 
     const guardarTelefono = (e) => {
         try {
-            Api.asignarTurno(datos)
+            Api.modificarPaciente(datos)
             .then(() => {
                 setModalTelefono(false);
                 buscarPaciente();
