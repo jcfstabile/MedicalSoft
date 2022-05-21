@@ -1,7 +1,9 @@
 import {Fragment, useState } from "react";
 import Api from "./Api";
+import Modal from "./Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRectangleList, faEdit } from "@fortawesome/free-solid-svg-icons";
+import './css/BusquedaComponent.css';
 
 const initialForm = {
     dni : ""
@@ -27,6 +29,11 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
     const [datos,setDatos] = useState (initalData)
     const [error,setError] = useState ("")
     const [turno,setTurno] = useState (InitialTurno)
+
+    // MODIFICAR DATOS
+    const [modalNombre, setModalNombre] = useState(false);
+    const [modalApellido, setModalApellido] = useState(false);
+    const [modalTelefono, setModalTelefono] = useState(false);
 
     const buscarPaciente = async (e) => {
         try {
@@ -83,6 +90,63 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         cambiarEstadoBusqueda(false);
     }
 
+    const guardarNombre = (e) => {
+        try {
+            Api.asignarTurno(datos)
+            .then(() => {
+                setModalNombre(false);
+                buscarPaciente();
+            })
+        } catch(error) {
+            setModalNombre(false);
+            setError("No se pudo guardar el nombre nuevo.")
+        }
+    }
+
+    const handleChangeNombre = (e) => {
+        const paciente = datos;
+        paciente.nombre = e.target.value;
+        setDatos(paciente);
+    }
+
+    const guardarApellido = (e) => {
+        try {
+            Api.asignarTurno(datos)
+            .then(() => {
+                setModalApellido(false);
+                buscarPaciente();
+            })
+        } catch(error) {
+            setModalApellido(false);
+            setError("No se pudo guardar el apellido nuevo.")
+        }
+    }
+
+    const handleChangeApellido = (e) => {
+        const paciente = datos;
+        paciente.apellido = e.target.value;
+        setDatos(paciente);
+    }
+
+    const guardarTelefono = (e) => {
+        try {
+            Api.asignarTurno(datos)
+            .then(() => {
+                setModalTelefono(false);
+                buscarPaciente();
+            })
+        } catch(error) {
+            setModalTelefono(false);
+            setError("No se pudo guardar el telefono nuevo.")
+        }
+    }
+
+    const handleChangeTelefono = (e) => {
+        const paciente = datos;
+        paciente.telefono = e.target.value;
+        setDatos(paciente);
+    }
+
     return(
         datos,
         <Fragment>
@@ -109,28 +173,64 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                     <p>{datos.nombre}</p>
                     <p>
                         {esPacienteEncontrado
-                        ? <button className="edit-btn" type="submit"><FontAwesomeIcon icon={faEdit} className=""/></button>
+                        ? <button className="edit-btn" type="submit" onClick={() => setModalNombre(true)}>
+                            <FontAwesomeIcon icon={faEdit} className=""/>
+                          </button>
                         : ""}
                     </p>
                 </p>
+                <Modal estado={modalNombre} cambiarEstado={setModalNombre}>
+                    <FontAwesomeIcon icon={faRectangleList} className="turnosIcon"/>
+                    <p className="tittleModal">Cambiar nombre</p>
+                    <hr className="topModalhr"/>
+                    <input onChange={handleChangeNombre} class="inputCampo" placeHolder="Nuevo nombre..." type="text" name="nombre" id="nombreNuevo" />
+                    <div className="grupoBotonesModal">
+                        <button className="aceptarModal" type="submit" onClick={guardarNombre}>aceptar</button>
+                        <button className="cancelarModal" onClick ={() => setModalNombre(false)}>cancelar</button>
+                    </div>
+                </Modal>
                 <hr className="datosHr"/>
                 <p>APELLIDO: 
                     <p>{datos.apellido}</p>
                     <p>
                         {esPacienteEncontrado
-                        ? <button className="edit-btn" type="submit"><FontAwesomeIcon icon={faEdit} className=""/></button>
+                        ? <button className="edit-btn" type="submit" onClick={() => setModalApellido(true)}>
+                            <FontAwesomeIcon icon={faEdit} className=""/>
+                          </button>
                         : ""}
                     </p>
                 </p>
+                <Modal estado={modalApellido} cambiarEstado={setModalApellido}>
+                    <FontAwesomeIcon icon={faRectangleList} className="turnosIcon"/>
+                    <p className="tittleModal">Cambiar apellido</p>
+                    <hr className="topModalhr"/>
+                    <input onChange={handleChangeApellido} class="inputCampo" placeHolder="Nuevo apellido..." type="text" name="apellido" id="apellidoNuevo" />
+                    <div className="grupoBotonesModal">
+                        <button className="aceptarModal" type="submit" onClick={guardarApellido}>aceptar</button>
+                        <button className="cancelarModal" onClick ={() => setModalApellido(false)}>cancelar</button>
+                    </div>
+                </Modal>
                 <hr className="datosHr"/>
                 <p>TELEFONO: 
                     <p>{datos.telefono}</p>
                     <p>
                         {esPacienteEncontrado
-                        ? <button className="edit-btn" type="submit"><FontAwesomeIcon icon={faEdit} className=""/></button>
+                        ? <button className="edit-btn" type="submit" onClick={() => setModalTelefono(true)}>
+                            <FontAwesomeIcon icon={faEdit} className=""/>
+                          </button>
                         : ""}
                     </p>
                 </p>
+                <Modal estado={modalTelefono} cambiarEstado={setModalTelefono}>
+                    <FontAwesomeIcon icon={faRectangleList} className="turnosIcon"/>
+                    <p className="tittleModal">Cambiar telefono</p>
+                    <hr className="topModalhr"/>
+                    <input onChange={handleChangeTelefono} class="inputCampo" placeHolder="Nuevo telefono..." type="number" name="telefono" id="telefonoNuevo" />
+                    <div className="grupoBotonesModal">
+                        <button className="aceptarModal" type="submit" onClick={guardarTelefono}>aceptar</button>
+                        <button className="cancelarModal" onClick ={() => setModalTelefono(false)}>cancelar</button>
+                    </div>
+                </Modal>
                 <hr className="datosHr"/>
 
                 <p>TURNO:
