@@ -1,0 +1,49 @@
+.overlayModalEdicion{
+    padding: 40px;
+    width: 100vw;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedorModalEdicion{
+    width: 500px;
+    height: 250px;
+    min-height: 100px;
+    background:white;
+    position : relative;
+    border-radius: 5px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px; 
+    padding: 20px;
+}
+
+.grupoBotonesModalEdicion{
+    position: absolute;
+    bottom:25px;
+    display: flex;
+    justify-content: space-between;
+    background: #6b0e0e!;
+}
+
+.bodyModalEdicion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.errorMsgEdicion {
+    width: 300px;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid red;
+    border-radius: 10px;
+    color: red;
+    background-color: rgb(211, 204, 204);
+    text-align: center;
+}

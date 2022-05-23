@@ -26,6 +26,7 @@ const BuscarPaciente = () =>{
     const[turnoElegido,setTurnoElegido] = useState(initialTurnoElegido)
     const[asignacionExitosa,setAsignacionExitosa] = useState(false)
     const [dniBuscado, setDniBuscado] = useState("")
+    const[estadoBusqueda,setEstadoBusqueda] = useState(false)
 
     useEffect(() => {
         const obtenerTurnos = async () => {
@@ -56,6 +57,12 @@ const BuscarPaciente = () =>{
         .then(() => {
             setAsignacionExitosa(true);
         })
+
+        setTimeout(() => {
+            cancelarModal();
+            setEstadoBusqueda(true);
+        }
+        , 3000);
     }
 
 
@@ -71,7 +78,9 @@ const BuscarPaciente = () =>{
             <hr/>
             <div className="titulo">BUSCAR PACIENTE</div>
             <div className = "bodyAggPac2">
-                <BusquedaComponent 
+                <BusquedaComponent
+                    estadoBusqueda={estadoBusqueda}
+                    cambiarEstadoBusqueda={setEstadoBusqueda} 
                     activarModal={setEstadoModal} 
                     devolverDni={setDniBuscado} />
             </div>
@@ -106,10 +115,6 @@ const BuscarPaciente = () =>{
                                 );
                             }
                             }
-                            // <div className="turnoLine" onClick={(e) => seleccionarTurno(t.fecha, t.hora)} >
-                            //     <p>{t.fecha}</p>
-                            //     <p>{t.hora}</p>
-                            // </div>
                         )
                         }
                     </div>

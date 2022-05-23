@@ -38,11 +38,16 @@ function buscarTurno(dni){
         .then(response => response.data)
 }
 
+function modificarPaciente(paciente){
+    return axios.patch(host.concat('/api/paciente'), paciente)
+}
+
 export default{
     agregarPaciente,
     login,
     buscarPaciente,
     buscarTurnos,
     asignarTurno,
-    buscarTurno
+    buscarTurno,
+    modificarPaciente
 }
