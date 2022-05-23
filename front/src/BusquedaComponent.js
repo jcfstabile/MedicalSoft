@@ -234,9 +234,7 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         setErrorTelefono("El telefono es requerido");
         buscarPaciente();
     }
-
-	let regexApellido = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;/// Letras y espacios, pueden llevar acentos.
-
+    
     return(
         datos,
         <Fragment>
