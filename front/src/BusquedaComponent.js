@@ -35,6 +35,9 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
     const [modalNombre, setModalNombre] = useState(false);
     const [modalApellido, setModalApellido] = useState(false);
     const [modalTelefono, setModalTelefono] = useState(false);
+    const [errorNombre, setErrorNombre] = useState("El nombre es requerido");
+    const [errorApellido, setErrorApellido] = useState("El apellido es requerido");
+    const [errorTelefono, setErrorTelefono] = useState("El telefono es requerido");
 
     const buscarPaciente = async (e) => {
         try {
@@ -108,10 +111,33 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         const paciente = datos;
         paciente.nombre = e.target.value;
         setDatos(paciente);
+
+        let regexNombre   = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;/// Letras y espacios, pueden llevar acentos.
+
+        if (!datos.nombre.trim()){
+            setErrorNombre("El nombre es requerido");
+        }else if(!regexNombre.test(datos.nombre.trim())) {
+            setErrorNombre("El nombre sólo acepta letras y espacios en blanco")
+        } else {
+            setErrorNombre("")
+        }
+    }
+
+    const handleBlurNombre = (e) => {
+        let regexNombre   = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;/// Letras y espacios, pueden llevar acentos.
+
+        if (!datos.nombre.trim()){
+            setErrorNombre("El nombre es requerido");
+        } else if(!regexNombre.test(datos.nombre.trim())) {
+            setErrorNombre("El nombre sólo acepta letras y espacios en blanco")
+        } else {
+            setErrorNombre("")
+        }
     }
 
     const cancelarModalNombre = () => {
         setModalNombre(false);
+        setErrorNombre("El nombre es requerido");
         buscarPaciente();
     }
 
@@ -132,10 +158,33 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         const paciente = datos;
         paciente.apellido = e.target.value;
         setDatos(paciente);
+
+        let regexApellido   = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;/// Letras y espacios, pueden llevar acentos.
+
+        if (!datos.apellido.trim()){
+            setErrorApellido("El apellido es requerido");
+        }else if(!regexApellido.test(datos.apellido.trim())) {
+            setErrorApellido("El apellido sólo acepta letras y espacios en blanco")
+        } else {
+            setErrorApellido("")
+        }
+    }
+
+    const handleBlurApellido = (e) => {
+        let regexApellido   = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;/// Letras y espacios, pueden llevar acentos.
+
+        if (!datos.apellido.trim()){
+            setErrorApellido("El apellido es requerido");
+        }else if(!regexApellido.test(datos.apellido.trim())) {
+            setErrorApellido("El apellido sólo acepta letras y espacios en blanco")
+        } else {
+            setErrorApellido("")
+        }
     }
 
     const cancelarModalApellido = () => {
         setModalApellido(false);
+        setErrorApellido("El apellido es requerido");
         buscarPaciente();
     }
 
@@ -156,12 +205,37 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         const paciente = datos;
         paciente.telefono = e.target.value;
         setDatos(paciente);
+
+        let regexTelefono = /^\d{7,14}$/; // 7 a 14 numeros.
+
+        if (!datos.telefono.trim()){
+            setErrorTelefono("El telefono es requerido");
+        } else if(!regexTelefono.test(datos.telefono.trim())) {
+            setErrorTelefono("El telefono sólo solo puede contener numeros y el máximo son 14")
+        } else {
+            setErrorTelefono("")
+        }
+    }
+
+    const handleBlurTelefono = (e) => {
+        let regexTelefono = /^\d{7,14}$/; // 7 a 14 numeros.
+
+        if (!datos.telefono.trim()){
+            setErrorTelefono("El telefono es requerido");
+        } else if(!regexTelefono.test(datos.telefono.trim())) {
+            setErrorTelefono("El telefono sólo solo puede contener numeros y el máximo son 14")
+        } else {
+            setErrorTelefono("")
+        }
     }
 
     const cancelarModalTelefono = () => {
         setModalTelefono(false);
+        setErrorTelefono("El telefono es requerido");
         buscarPaciente();
     }
+
+	let regexApellido = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;/// Letras y espacios, pueden llevar acentos.
 
     return(
         datos,
@@ -200,7 +274,8 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                     <p className="tittleModal">Cambiar nombre</p>
                     <hr className="topModalhr"/>
                     <div className="bodyModalEdicion">
-                        <input onChange={handleChangeNombre} class="inputCampo" placeHolder="Nuevo nombre..." type="text" name="nombre" id="nombreNuevo" />
+                        <input onChange={handleChangeNombre} onBlur={handleBlurNombre} class="inputCampo" placeHolder="Nuevo nombre..." type="text" name="nombre" id="nombreNuevo" />
+                        {errorNombre?<span className = "errorMsgEdicion">{errorNombre}</span>:null}
                         <div className="grupoBotonesModalEdicion">
                             <button className="aceptarModal" type="submit" onClick={guardarNombre}>aceptar</button>
                             <button className="cancelarModal" onClick ={cancelarModalNombre}>cancelar</button>
@@ -223,7 +298,8 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                     <p className="tittleModal">Cambiar apellido</p>
                     <hr className="topModalhr"/>
                     <div className="bodyModalEdicion">
-                        <input onChange={handleChangeApellido} class="inputCampo" placeHolder="Nuevo apellido..." type="text" name="apellido" id="apellidoNuevo" />
+                        <input onChange={handleChangeApellido} onBlur={handleBlurApellido} class="inputCampo" placeHolder="Nuevo apellido..." type="text" name="apellido" id="apellidoNuevo" />
+                        {errorApellido?<span className = "errorMsgEdicion">{errorApellido}</span>:null}
                         <div className="grupoBotonesModalEdicion">
                             <button className="aceptarModal" type="submit" onClick={guardarApellido}>aceptar</button>
                             <button className="cancelarModal" onClick ={cancelarModalApellido}>cancelar</button>
@@ -247,6 +323,7 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                     <hr className="topModalhr"/>
                     <div className="bodyModalEdicion">
                         <input onChange={handleChangeTelefono} class="inputCampo" placeHolder="Nuevo telefono..." type="number" name="telefono" id="telefonoNuevo" />
+                        {errorTelefono?<span className = "errorMsgEdicion">{errorTelefono}</span>:null}
                         <div className="grupoBotonesModalEdicion">
                             <button className="aceptarModal" type="submit" onClick={guardarTelefono}>aceptar</button>
                             <button className="cancelarModal" onClick ={cancelarModalTelefono}>cancelar</button>
