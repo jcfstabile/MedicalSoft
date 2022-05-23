@@ -15,7 +15,7 @@ return (
                 </div>
                 <img src='/images/logoNombre.png' alt='' width="100%" />
             </div>
-            <hr/>
+            <hr></hr>
             <div className = "bodyAggPac">
                 <PacientForm></PacientForm>
                 <div className="pacienteImagen">
