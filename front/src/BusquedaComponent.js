@@ -2,8 +2,9 @@ import {Fragment, useState } from "react";
 import Api from "./Api";
 import Modal from "./Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRectangleList, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faRectangleList, faEdit, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import './css/BusquedaComponent.css';
+import ModalEdicion from "./ModalEdicion";
 
 const initialForm = {
     dni : ""
@@ -109,6 +110,11 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         setDatos(paciente);
     }
 
+    const cancelarModalNombre = () => {
+        setModalNombre(false);
+        buscarPaciente();
+    }
+
     const guardarApellido = (e) => {
         try {
             Api.modificarPaciente(datos)
@@ -128,6 +134,11 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         setDatos(paciente);
     }
 
+    const cancelarModalApellido = () => {
+        setModalApellido(false);
+        buscarPaciente();
+    }
+
     const guardarTelefono = (e) => {
         try {
             Api.modificarPaciente(datos)
@@ -145,6 +156,11 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         const paciente = datos;
         paciente.telefono = e.target.value;
         setDatos(paciente);
+    }
+
+    const cancelarModalTelefono = () => {
+        setModalTelefono(false);
+        buscarPaciente();
     }
 
     return(
@@ -179,16 +195,18 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                         : ""}
                     </p>
                 </p>
-                <Modal estado={modalNombre} cambiarEstado={setModalNombre}>
-                    <FontAwesomeIcon icon={faRectangleList} className="turnosIcon"/>
+                <ModalEdicion estado={modalNombre} cambiarEstado={setModalNombre}>
+                    <FontAwesomeIcon icon={faUserEdit} className="turnosIcon"/>
                     <p className="tittleModal">Cambiar nombre</p>
                     <hr className="topModalhr"/>
-                    <input onChange={handleChangeNombre} class="inputCampo" placeHolder="Nuevo nombre..." type="text" name="nombre" id="nombreNuevo" />
-                    <div className="grupoBotonesModal">
-                        <button className="aceptarModal" type="submit" onClick={guardarNombre}>aceptar</button>
-                        <button className="cancelarModal" onClick ={() => setModalNombre(false)}>cancelar</button>
+                    <div className="bodyModalEdicion">
+                        <input onChange={handleChangeNombre} class="inputCampo" placeHolder="Nuevo nombre..." type="text" name="nombre" id="nombreNuevo" />
+                        <div className="grupoBotonesModalEdicion">
+                            <button className="aceptarModal" type="submit" onClick={guardarNombre}>aceptar</button>
+                            <button className="cancelarModal" onClick ={cancelarModalNombre}>cancelar</button>
+                        </div>
                     </div>
-                </Modal>
+                </ModalEdicion>
                 <hr className="datosHr"/>
                 <p>APELLIDO: 
                     <p>{datos.apellido}</p>
@@ -200,16 +218,18 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                         : ""}
                     </p>
                 </p>
-                <Modal estado={modalApellido} cambiarEstado={setModalApellido}>
-                    <FontAwesomeIcon icon={faRectangleList} className="turnosIcon"/>
+                <ModalEdicion estado={modalApellido} cambiarEstado={setModalApellido}>
+                    <FontAwesomeIcon icon={faUserEdit} className="turnosIcon"/>
                     <p className="tittleModal">Cambiar apellido</p>
                     <hr className="topModalhr"/>
-                    <input onChange={handleChangeApellido} class="inputCampo" placeHolder="Nuevo apellido..." type="text" name="apellido" id="apellidoNuevo" />
-                    <div className="grupoBotonesModal">
-                        <button className="aceptarModal" type="submit" onClick={guardarApellido}>aceptar</button>
-                        <button className="cancelarModal" onClick ={() => setModalApellido(false)}>cancelar</button>
+                    <div className="bodyModalEdicion">
+                        <input onChange={handleChangeApellido} class="inputCampo" placeHolder="Nuevo apellido..." type="text" name="apellido" id="apellidoNuevo" />
+                        <div className="grupoBotonesModalEdicion">
+                            <button className="aceptarModal" type="submit" onClick={guardarApellido}>aceptar</button>
+                            <button className="cancelarModal" onClick ={cancelarModalApellido}>cancelar</button>
+                        </div>
                     </div>
-                </Modal>
+                </ModalEdicion>
                 <hr className="datosHr"/>
                 <p>TELEFONO: 
                     <p>{datos.telefono}</p>
@@ -221,16 +241,18 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                         : ""}
                     </p>
                 </p>
-                <Modal estado={modalTelefono} cambiarEstado={setModalTelefono}>
-                    <FontAwesomeIcon icon={faRectangleList} className="turnosIcon"/>
+                <ModalEdicion estado={modalTelefono} cambiarEstado={setModalTelefono}>
+                    <FontAwesomeIcon icon={faUserEdit} className="turnosIcon"/>
                     <p className="tittleModal">Cambiar telefono</p>
                     <hr className="topModalhr"/>
-                    <input onChange={handleChangeTelefono} class="inputCampo" placeHolder="Nuevo telefono..." type="number" name="telefono" id="telefonoNuevo" />
-                    <div className="grupoBotonesModal">
-                        <button className="aceptarModal" type="submit" onClick={guardarTelefono}>aceptar</button>
-                        <button className="cancelarModal" onClick ={() => setModalTelefono(false)}>cancelar</button>
+                    <div className="bodyModalEdicion">
+                        <input onChange={handleChangeTelefono} class="inputCampo" placeHolder="Nuevo telefono..." type="number" name="telefono" id="telefonoNuevo" />
+                        <div className="grupoBotonesModalEdicion">
+                            <button className="aceptarModal" type="submit" onClick={guardarTelefono}>aceptar</button>
+                            <button className="cancelarModal" onClick ={cancelarModalTelefono}>cancelar</button>
+                        </div>
                     </div>
-                </Modal>
+                </ModalEdicion>
                 <hr className="datosHr"/>
 
                 <p>TURNO:
