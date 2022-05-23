@@ -36,7 +36,7 @@ open class SetUpTest {
 
     @AfterAll
     fun  afterAll(){
-        db.sqlUpdate("DROP DATABASE MedicalSoftTest;")
+        // db.sqlUpdate("DROP DATABASE IF EXISTS MedicalSoftTest;")
         MedicalSoft.stop()
     }
 
