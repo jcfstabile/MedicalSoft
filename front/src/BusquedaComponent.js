@@ -2,7 +2,7 @@ import {Fragment, useState } from "react";
 import Api from "./Api";
 import Modal from "./Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRectangleList, faEdit, faUserEdit } from "@fortawesome/free-solid-svg-icons";
+import { faRectangleList, faEdit, faUserEdit, faTrash} from "@fortawesome/free-solid-svg-icons";
 import './css/BusquedaComponent.css';
 import ModalEdicion from "./ModalEdicion";
 
@@ -38,6 +38,9 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
     const [errorNombre, setErrorNombre] = useState("El nombre es requerido");
     const [errorApellido, setErrorApellido] = useState("El apellido es requerido");
     const [errorTelefono, setErrorTelefono] = useState("El telefono es requerido");
+
+    // BORRAR TURNO
+    const [modalTurno, setModalTurno] = useState(false);
 
     const buscarPaciente = async (e) => {
         try {
@@ -234,6 +237,30 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
         setErrorTelefono("El telefono es requerido");
         buscarPaciente();
     }
+
+    const borrarTurno = () => {
+        try {
+            const turnoBorrado = {
+                fecha: turno.turno.fecha,
+                hora: turno.turno.hora,
+                dni: ""
+            }
+
+            Api.asignarTurno(turnoBorrado)
+            .then(() => {
+                setModalTurno(false);
+                buscarPaciente();
+            })
+        } catch(error) {
+            setModalTurno(false);
+            setError("No se pudo borrar el turno.")
+        }
+    }
+
+    const cancelarModalTurno = () => {
+        setModalTurno(false);
+        buscarPaciente();
+    }
     
     return(
         datos,
@@ -335,7 +362,30 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                     ? <p>fecha: {turno.turno.fecha}, hora: {turno.turno.hora}</p> 
                     : <p>Sin turno</p>)
                 }
+                {(turno.turno != null && turno.turno.fecha != ""
+                    ? <button className="edit-btn" type="submit" onClick={() => setModalTurno(true)}>
+                        <FontAwesomeIcon icon={faTrash} className=""/>
+                      </button> 
+                    : "")
+                }
                 </p>
+                <ModalEdicion estado={modalTurno} cambiarEstado={setModalTurno}>
+                    <FontAwesomeIcon icon={faTrash} className="turnosIcon"/>
+                    <p className="tittleModal">¿Desea borrar el turno?</p>
+                    <hr className="topModalhr"/>
+                    <div className="bodyModalEdicion">
+                    <p className="turnoEnModalEdicion">TURNO:
+                    {(turno.turno != null && turno.turno.fecha != ""
+                        ? <p>fecha: {turno.turno.fecha}, hora: {turno.turno.hora}</p> 
+                        : <p>Sin turno</p>)
+                    }
+                    </p>
+                        <div className="grupoBotonesModalEdicion">
+                            <button className="aceptarModal" type="submit" onClick={borrarTurno}>borrar</button>
+                            <button className="cancelarModal" onClick ={cancelarModalTurno}>salir</button>
+                        </div>
+                    </div>
+                </ModalEdicion>
                 
             </div>
             <div className="botones-buscarPaciente">
