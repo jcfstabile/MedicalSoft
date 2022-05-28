@@ -35,11 +35,13 @@ class ApiTest : SetUpTest() {
     }
 
     @Test
-    fun `Turnos endpoint listado de turnos del día ordenados por hora`(){
+    fun `Turnos endpoint listado de turnos del dia ordenados por hora`(){
         db.addTurno("8888-12-31", "11:44:00", "91110044")
         db.addTurno("9999-12-28", "01:22:01", "91110001")
         db.addTurno("7777-12-31", "11:22:00", "91110002")
         db.addTurno("8888-12-31", "11:34:00", "91110034")
+        db.addTurno("8888-12-31", "11:35:00", "")
+        db.addTurno("8888-12-31", "11:36:00", "")
 
         val payload = mapOf( "fecha"  to  "8888-12-31")
         val response = khttp.get(
