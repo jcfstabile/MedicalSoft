@@ -4,15 +4,17 @@ import axios from 'axios'
 
 const host = 'http://localhost:7777';
 
+const systemDown = { status : 7000, message : 'El sistema no esta disponible' }
+
+const netError = err => { if (err.message === 'Network Error') throw(systemDown); }
 
 function agregarPaciente(payload){
     return axios.post(host.concat('/api/paciente'), payload)
 }
 
 function login (datosUsuario){
-    return axios.post(host.concat('/api/login'),datosUsuario)
+    return axios.post(host.concat('/api/login'),datosUsuario).catch(netError)
 }
-
 function asignarTurno(turno){
     return axios.patch(host.concat('/api/turnos'), turno)
 }
@@ -22,6 +24,7 @@ function buscarPaciente(dniSearch) {
     return axios
         .get(url)
         .then(response => response.data)
+        .catch(netError)
 }
 
 function buscarTurnos(){
