@@ -7,6 +7,7 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { usePacientForm } from "./usePacientForm";
 import { Fragment } from "react";
 
+
 const initialForm = {
     dni:"",
     nombre:"",
@@ -51,16 +52,18 @@ const PacientForm = () => {
         errors,
         successRegister,
         errorRegister,
-        noConectionError,
+        netError,
         handleChange,
         handleBlur,
         handleSubmit
     } = usePacientForm(initialForm,validationsForm);
 
+
     const navigate = useNavigate();
     const reload = () => {
         navigate(0);
     }
+
 
     return(
         <Fragment>
@@ -99,7 +102,7 @@ const PacientForm = () => {
                 </div>
                 {successRegister && (<div className="feedBackMsg"><FontAwesomeIcon icon={faCheckCircle} className ="feedbackIcon"/><p className="msgFeedback">Paciente agregado exitosamente</p></div>)}
                 {errorRegister &&(<div className="feedBackMsg"><FontAwesomeIcon icon={faTriangleExclamation} className = "feedbackIcon"/><p className="msgFeedback">No se pudo agregar el paciente porque ya existe</p></div>)}
-                {noConectionError &&(<div className="feedBackMsg"><FontAwesomeIcon icon={faTriangleExclamation} className = "feedbackIcon"/><p className="msgFeedback">No se pudo establecer conexion con el servidor</p></div>)}
+                {netError &&(<div className="feedBackMsg"><FontAwesomeIcon icon={faTriangleExclamation} className = "feedbackIcon"/><p className="msgFeedback">El servicio no está disponible</p></div>)}
             </form>
         </Fragment>
         

@@ -7,7 +7,7 @@ export const usePacientForm = (initialForm,validateForm) => {
     const[errors,setErrors] = useState ({}) ; //si el objeto no tiene ningun elemento durante la validacion significa que esta todo ok
     const[successRegister,setSuccessRegister] = useState (false);
     const[errorRegister,setErrorRegister] = useState (false);
-    const[noConectionError,setNoConectionError] = useState (false);
+    const[netError,setNetError] = useState (false);
 
     //variables que se van a ejecutar en los eventos
     const handleChange = (e) => {
@@ -32,20 +32,23 @@ export const usePacientForm = (initialForm,validateForm) => {
                 e.target.reset()
                 setErrors({})
                 setErrorRegister(false)
+                setNetError(false)
                 setSuccessRegister(true)
                 setTimeout(() => setSuccessRegister(false), 5000);
               })
               .catch((error) => {
-                if(error.response == undefined){
                     setErrorRegister(false)
-                    setNoConectionError(true)
-                    console.log("el servidor no esta levantado")
-                }
-                else{
-                    setNoConectionError(false)
-                    setErrorRegister(true)
-                    console.log("servidor levantado")
-                }
+                    setNetError(error)
+                // if(error.response == undefined){
+                //     setErrorRegister(false)
+                //     setNoConectionError(true)
+                //     console.log("el servidor no esta levantado")
+                // }
+                // else{
+                //     setNoConectionError(false)
+                //     setErrorRegister(true)
+                //     console.log("servidor levantado")
+                // }
             })
           } 
         
@@ -56,7 +59,7 @@ export const usePacientForm = (initialForm,validateForm) => {
         errors,
         successRegister,
         errorRegister,
-        noConectionError,
+        netError,
         handleBlur,
         handleChange,
         handleSubmit
