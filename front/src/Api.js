@@ -6,7 +6,7 @@ const host = 'http://localhost:7777';
 
 const systemDown = { status : 7000, message : 'El sistema no está disponible' }
 
-const netError = err => { if (err.message === 'Network Error') throw(systemDown); }
+const netError = err => { if (err.message === 'Network Error') throw(systemDown); else throw(err); }
 
 function agregarPaciente(payload){
     return axios.post(host.concat('/api/paciente'), payload).catch(netError)
