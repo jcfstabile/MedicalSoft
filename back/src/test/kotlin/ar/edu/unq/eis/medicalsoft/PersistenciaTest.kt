@@ -19,6 +19,32 @@ class PersistenciaTest : SetUpTest() {
     }
 
     @Test
+    fun `Modificar paciente existente`(){
+        db.addPaciente("12344321", "Keith", "Richar", "0" )
+        db.modPaciente("12344321", "Mick", "Jagg", "0" )
+
+        val paciente = db.getPaciente("12344321")
+        assertEquals("Mick", paciente.nombre)
+        assertEquals("Jagg", paciente.apellido)
+        assertEquals("0", paciente.telefono)
+        assertEquals("12344321", paciente.dni)
+    }
+
+    @Test
+    fun `Obtener turnos asignados vacio`() {
+        val turnos = db.getTurnosAsignadosDel("9999-02-02")
+        assertTrue(turnos.turnos.isEmpty())
+    }
+
+    @Test
+    fun `Obtener turnos asignados`() {
+        val turnos = db.getTurnosAsignadosDel("9999-02-03")
+        assertEquals("9999-02-03", turnos.turnos[0].fecha )
+        assertEquals("01:02:00", turnos.turnos[0].hora )
+        assertEquals("22224444", turnos.turnos[0].dni )
+    }
+
+    @Test
     fun `Obtener turnos disponibles`() {
         val turnos = db.getTurnosDisponibles()
         assertEquals("9999-12-31", turnos.turnos[0].fecha )
