@@ -49,7 +49,8 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
             setTurno(InitialTurno)
             obtenerTurno()
         } catch (error) {
-            setError("No hay paciente con el DNI ingresado")
+            if (error.status === 7000) setError(error.message)
+            else setError("No hay paciente con el DNI ingresado")
             setTimeout(() => setError(""), 4000);
             setDatos(initalData);
             setTurno(InitialTurno)
@@ -386,7 +387,6 @@ const BusquedaComponent = ({estadoBusqueda, cambiarEstadoBusqueda,
                         </div>
                     </div>
                 </ModalEdicion>
-                
             </div>
             <div className="botones-buscarPaciente">
                 {datos.dni == "" 
