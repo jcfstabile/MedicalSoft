@@ -31,6 +31,13 @@ function buscarTurnos(){
         .then(response => response.data)
 }
 
+function buscarTurnosAsignados(){
+    const url = host.concat('/api/turnos?fecha=9990-12-21')
+    return axios
+        .get(url)
+        .then(response =>response.data)
+}
+
 function buscarTurno(dni){
     const url = host.concat('/api/turno?dni='+dni)
     return axios
@@ -47,7 +54,9 @@ export default{
     login,
     buscarPaciente,
     buscarTurnos,
+    buscarTurnosAsignados,
     asignarTurno,
     buscarTurno,
     modificarPaciente
+    
 }
