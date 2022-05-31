@@ -55,6 +55,12 @@ hr {
     color: rgb(73, 73, 73);
 }
 
+.turnosList2 tr td{
+    display: flex;
+    justify-content: center;
+}
+
+
 .mensajeTurnosAsign{
     position: absolute;
     top: 50px;
