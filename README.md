@@ -1,5 +1,7 @@
 # MedicalSoft
 
+## Presentación final: [link](https://docs.google.com/presentation/d/1SpNeiqLakg86zmmXF9b6v7HteZD1OoL8K3xFB1IqntM/edit#slide=id.p)
+
 ## Product Backlog, Sprint Backlog: [link](https://trello.com/b/4xbNYNMN/medicalsoft)
 
 ## Repositorio del producto: [link](https://github.com/jcfstabile/MedicalSoft)
