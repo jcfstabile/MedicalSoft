@@ -8,20 +8,6 @@ import org.junit.jupiter.api.Assertions.*
 class ApiTest : SetUpTest() {
 
     @Test
-    fun `Turno endpoint sin turno asignado a paciente`(){
-        db.addTurno("8888-12-31", "11:22:00", "12341234")
-
-        val payload = mapOf( "dni"  to  "88880000")
-        val response = khttp.get(
-            url = "http://localhost:7777/api/turno",
-            params=payload
-        )
-
-        assertEquals(200, response.statusCode)
-        assertEquals("null", response.jsonObject.get("turno").toString())
-    }
-
-    @Test
     fun `Turno endpoint con turno asignado a paciente`(){
         db.addTurno("8888-12-31", "11:22:00", "87654321")
 
@@ -33,6 +19,39 @@ class ApiTest : SetUpTest() {
 
         assertEquals(200, response.statusCode)
         assertEquals("{\"fecha\":\"8888-12-31\",\"hora\":\"11:22:00\"}", response.jsonObject.get("turno").toString())
+    }
+
+    @Test
+    fun `Turnos endpoint listado de turnos del dia vacio`(){
+        val payload = mapOf( "fecha"  to  "1888-12-31")
+        val response = khttp.get(
+            url = "http://localhost:7777/api/turnos",
+            params = payload
+        )
+
+        assertEquals(200, response.statusCode)
+        assertEquals("[]"
+            , response.jsonObject["turnos"].toString())
+    }
+
+    @Test
+    fun `Turnos endpoint listado de turnos del dia ordenados por hora`(){
+        db.addTurno("8888-12-31", "11:44:00", "91110044")
+        db.addTurno("9999-12-28", "01:22:01", "91110001")
+        db.addTurno("7777-12-31", "11:22:00", "91110002")
+        db.addTurno("8888-12-31", "11:34:00", "91110034")
+        db.addTurno("8888-12-31", "11:35:00", "")
+        db.addTurno("8888-12-31", "11:36:00", "")
+
+        val payload = mapOf( "fecha"  to  "8888-12-31")
+        val response = khttp.get(
+            url = "http://localhost:7777/api/turnos",
+            params = payload
+        )
+
+        assertEquals(200, response.statusCode)
+        assertEquals("[{\"fecha\":\"8888-12-31\",\"hora\":\"11:34:00\",\"dni\":\"91110034\"},{\"fecha\":\"8888-12-31\",\"hora\":\"11:44:00\",\"dni\":\"91110044\"}]"
+            , response.jsonObject["turnos"].toString())
     }
 
     @Test

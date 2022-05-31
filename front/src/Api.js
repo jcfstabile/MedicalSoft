@@ -4,15 +4,17 @@ import axios from 'axios'
 
 const host = 'http://localhost:7777';
 
+const systemDown = { status : 7000, message : 'El sistema no está disponible' }
+
+const netError = err => { if (err.message === 'Network Error') throw(systemDown); else throw(err); }
 
 function agregarPaciente(payload){
-    return axios.post(host.concat('/api/paciente'), payload)
+    return axios.post(host.concat('/api/paciente'), payload).catch(netError)
 }
 
 function login (datosUsuario){
-    return axios.post(host.concat('/api/login'),datosUsuario)
+    return axios.post(host.concat('/api/login'),datosUsuario).catch(netError)
 }
-
 function asignarTurno(turno){
     return axios.patch(host.concat('/api/turnos'), turno)
 }
@@ -22,6 +24,7 @@ function buscarPaciente(dniSearch) {
     return axios
         .get(url)
         .then(response => response.data)
+        .catch(netError)
 }
 
 function buscarTurnos(){
@@ -29,6 +32,13 @@ function buscarTurnos(){
     return axios
         .get(url)
         .then(response => response.data)
+}
+
+function buscarTurnosAsignados(){
+    const url = host.concat('/api/turnos?fecha=2022-10-20')
+    return axios
+        .get(url)
+        .then(response =>response.data)
 }
 
 function buscarTurno(dni){
@@ -47,6 +57,7 @@ export default{
     login,
     buscarPaciente,
     buscarTurnos,
+    buscarTurnosAsignados,
     asignarTurno,
     buscarTurno,
     modificarPaciente

@@ -81,9 +81,16 @@ object MedicalSoft {
         }
 
         app.get("/api/turnos") { ctx ->
-            val turnos = TurnosService(base).obtenerTurnosDisponibles()
-            ctx.status(200)
-            ctx.json(turnos)
+            val fecha = ctx.queryParam("fecha")
+            if (fecha == null) {
+                val turnos = TurnosService(base).obtenerTurnosDisponibles()
+                ctx.status(200)
+                ctx.json(turnos)
+            } else {
+                val turnos =  TurnosService(base).obtenerTurnosAsignadosEl(fecha)
+                ctx.status(200)
+                ctx.json(turnos)
+            }
         }
 
         app.patch("/api/turnos") { ctx ->

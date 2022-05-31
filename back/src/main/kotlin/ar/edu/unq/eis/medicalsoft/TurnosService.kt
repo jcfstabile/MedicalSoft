@@ -4,6 +4,7 @@ data class FechaHora  (val fecha : String, val hora : String)
 data class TurnoAsignado (val turno : FechaHora?)
 data class Turno  (val fecha : String, val hora : String, val dni : String)
 data class Turnos (val turnos : Array<FechaHora>)
+data class TurnosDados (val turnos : Array<Turno>)
 
 class TurnosService(val base : Persistencia) {
     fun obtenerTurnosDisponibles() : Turnos {
@@ -16,6 +17,10 @@ class TurnosService(val base : Persistencia) {
 
     fun obtenerTurnoAsignado(dni: String?): TurnoAsignado {
         return base.getTurnoPara(dni);
+    }
+
+    fun obtenerTurnosAsignadosEl(fecha: String): TurnosDados {
+        return base.getTurnosAsignadosDel(fecha)
     }
 }
 

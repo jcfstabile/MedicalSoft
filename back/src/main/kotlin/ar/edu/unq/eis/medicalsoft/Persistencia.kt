@@ -172,4 +172,21 @@ class Persistencia {
                 """
         )
     }
+
+    fun getTurnosAsignadosDel(fecha: String): TurnosDados {
+        var turnosDados : Array<Turno> = arrayOf()
+        val rs = sqlQuery(
+            """
+                SELECT * FROM Turnos 
+                WHERE fecha LIKE '${fecha}' AND dni <> ''
+                ORDER BY hora ASC;
+            """.trimIndent()
+        )
+
+        while (rs!!.next()) {
+            turnosDados += Turno(rs!!.getString("fecha"), rs!!.getString("hora"), rs!!.getString("dni"))
+        }
+
+        return (TurnosDados(turnosDados))
+    }
 }

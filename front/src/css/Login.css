@@ -16,6 +16,11 @@
     display: flex;
 }
 
+#netErrorMsg {
+    font-size: 12px;
+}
+
+
 .box {
     box-shadow: 50px 80px 140px 25px black;
     width: 400px;

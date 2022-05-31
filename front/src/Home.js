@@ -8,10 +8,17 @@ const Home = (props) => {
                 <p>MedicalSoft</p>
                 <img src='/images/electro.png' alt='' width="100%" />
                 <div className='nav-boton'>
+                    
                     <span>Pacientes</span>
-                    <div class="submenu">
+                    <div className="submenu">
                         <Link to='/agregarPaciente'>Agregar paciente</Link>
                         <Link to='/buscarPaciente'>Buscar paciente</Link>
+                    </div>
+                </div>
+                <div className='nav-boton'>
+                    <span>Turnos</span>
+                    <div className="submenu">
+                        <Link to='/turnosAsignados'>Turnos asignados</Link>
                     </div>
                 </div>
             </div>
