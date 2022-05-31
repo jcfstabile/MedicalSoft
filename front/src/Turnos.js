@@ -5,10 +5,7 @@ import Api from "./Api";
 
 
 const initialTurno = {
-    turnos: [{ "fecha" : "",
-        "hora"  : "", 
-        "dni"   : "" },
-    ]
+    turnos: []
 }
 
 const TurnosAsignados =() => {
@@ -18,6 +15,7 @@ const TurnosAsignados =() => {
         const obtenerTurnosAsignados = async () => {
             const response = await Api.buscarTurnosAsignados();
             setTurnos(response)
+            console.log(response)
         }
         obtenerTurnosAsignados()
     }, [])
@@ -43,19 +41,18 @@ const TurnosAsignados =() => {
                     </tr>
                     {
                     <div className="turnosList2">
-                        {   
-                        turnos.turnos.map(t =>{
-                            if (t.fecha == "" && t.dni == "" && t.hora ==""){
-                                return <p className="mensajeTurnosAsign">No se han asignado turnos</p>
-                            }else{
-                                return  <tr>
-                                            <td>{t.fecha}</td>
-                                            <td>{t.hora}</td>
-                                            <td>{t.dni}</td>
-                                        </tr>     
-                            }
-                        }
-                        )
+                        {
+                        (turnos.turnos.length == 0)
+                        ? <p className="mensajeTurnosAsign">No se han asignado turnos</p>
+                        : turnos.turnos.map(t => {
+                            return (
+                            <tr>
+                                <td>{t.fecha}</td>
+                                <td>{t.hora}</td>
+                                <td>{t.dni}</td>
+                            </tr>     
+                            )
+                            })
                         }
                     </div>
                     }
