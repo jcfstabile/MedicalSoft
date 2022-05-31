@@ -35,9 +35,11 @@ export const usePacientForm = (initialForm,validateForm) => {
                 setNetError(false)
                 setSuccessRegister(true)
                 setTimeout(() => setSuccessRegister(false), 5000);
-              })
-              .catch((error) => {
-                    setErrorRegister(false)
+              }).catch((error) => {
+                if (error.response && error.response.status === 422) {
+                    setErrorRegister(true)
+                    setNetError(false)
+                } else
                     setNetError(error)
                 // if(error.response == undefined){
                 //     setErrorRegister(false)
