@@ -35,7 +35,7 @@ function buscarTurnos(){
 }
 
 function buscarTurnosAsignados(){
-    const url = host.concat('/api/turnos?fecha=9990-12-21')
+    const url = host.concat('/api/turnos?fecha=2022-10-20')
     return axios
         .get(url)
         .then(response =>response.data)
