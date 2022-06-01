@@ -1,10 +1,10 @@
 package ar.edu.unq.eis.medicalsoft
 
 import io.javalin.Javalin
+import java.lang.Exception
 
 data class Usuario(val username : String, val password : String)
 
-data class Paciente(val apellido : String, val nombre : String, val dni : String, val telefono : String )
 
 object Administador {
     val nombre = "administrador"
@@ -50,6 +50,15 @@ object MedicalSoft {
                 ctx.status(200)
             else
                 ctx.status(401)
+        }
+
+        app.get("/api/pacientes") { ctx ->
+            try {
+                val pacientes = PacienteService(base).obtenerTodos()
+                ctx.status(200).json(pacientes)
+            } catch (ex: Exception) {
+                ctx.status(500)
+            }
         }
 
         app.get("/api/paciente") { ctx ->

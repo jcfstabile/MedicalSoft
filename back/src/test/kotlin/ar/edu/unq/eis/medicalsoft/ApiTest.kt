@@ -1,6 +1,7 @@
 package ar.edu.unq.eis.medicalsoft
 
 
+import org.json.JSONArray
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 
@@ -181,5 +182,35 @@ class ApiTest : SetUpTest() {
         assertEquals("Paol", paciente.apellido)
         assertEquals("Join", paciente.nombre)
         assertEquals("55556666", paciente.telefono)
+    }
+
+    @Test
+    fun `Pacientes endpoint obtener sin pacientes`() {
+
+        val response = khttp.get(
+            url = "http://localhost:7777/api/pacientes",
+        )
+
+        assertEquals(response.statusCode, 200)
+        assertEquals("[]", response.jsonObject["pacientes"].toString())
+    }
+
+    @Test
+    fun `Pacientes endpoint obtener todos`() {
+        db.addPaciente("12333445", "Pedro", "None", "23232323")
+        db.addPaciente("12333447", "Silvia", "None", "23232323")
+        db.addPaciente("12333446", "Maria", "None", "23232323")
+        db.addPaciente("12333444", "Juan", "None", "23232323")
+
+        val response = khttp.get(
+            url = "http://localhost:7777/api/pacientes",
+        )
+
+        val payload = response.jsonObject["pacientes"] as JSONArray
+        assertEquals(200, response.statusCode)
+        assertEquals("12333444", payload.getJSONObject(0)["dni"])
+        assertEquals("12333446", payload.getJSONObject(2)["dni"])
+        assertEquals("[{\"apellido\":\"None\",\"telefono\":\"23232323\",\"nombre\":\"Juan\",\"dni\":\"12333444\"},{\"apellido\":\"None\",\"telefono\":\"23232323\",\"nombre\":\"Pedro\",\"dni\":\"12333445\"},{\"apellido\":\"None\",\"telefono\":\"23232323\",\"nombre\":\"Maria\",\"dni\":\"12333446\"},{\"apellido\":\"None\",\"telefono\":\"23232323\",\"nombre\":\"Silvia\",\"dni\":\"12333447\"}]"
+                     , payload.toString())
     }
 }
