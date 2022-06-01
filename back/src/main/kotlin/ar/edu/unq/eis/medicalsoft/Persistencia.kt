@@ -189,4 +189,20 @@ class Persistencia {
 
         return (TurnosDados(turnosDados))
     }
+
+    fun getPacientes(): Pacientes {
+        var pacientes : Array<Paciente> = arrayOf()
+        val rs = sqlQuery(
+            """
+                SELECT * FROM Pacientes
+                ORDER BY dni ASC;
+            """.trimIndent()
+        )
+
+        while (rs!!.next()) {
+            pacientes += Paciente(rs!!.getString("apellido"), rs!!.getString("nombre"), rs!!.getString("dni"), rs!!.getString("telefono"))
+        }
+
+        return (Pacientes(pacientes))
+    }
 }

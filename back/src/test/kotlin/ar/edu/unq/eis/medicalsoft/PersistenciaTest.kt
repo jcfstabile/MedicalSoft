@@ -45,6 +45,28 @@ class PersistenciaTest : SetUpTest() {
     }
 
     @Test
+    fun `Obtener pacientes ordenados por dni`() {
+        val dni1 = "11111111"
+        val dni2 = "22222222"
+        val dni3 = "33333333"
+        val telefono = "76549012"
+        val nombre = "A"
+        val apellido = "A"
+        db.addPaciente(dni2, nombre, apellido, telefono)
+        db.addPaciente(dni1, nombre, apellido, telefono)
+        db.addPaciente(dni3, nombre, apellido, telefono)
+
+        val pacientes = db.getPacientes()
+
+        assertEquals(dni1, pacientes.pacientes[0].dni)
+        assertEquals(dni2, pacientes.pacientes[1].dni)
+        assertEquals(dni3, pacientes.pacientes[2].dni)
+        assertEquals(nombre, pacientes.pacientes[0].nombre)
+        assertEquals(apellido, pacientes.pacientes[1].apellido)
+        assertEquals(telefono, pacientes.pacientes[2].telefono)
+    }
+
+    @Test
     fun `Obtener turnos disponibles`() {
         val turnos = db.getTurnosDisponibles()
         assertEquals("9999-12-31", turnos.turnos[0].fecha )
