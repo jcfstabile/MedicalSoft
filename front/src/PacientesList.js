@@ -4,12 +4,12 @@ import './css/PacientList.css'
 import Api from "./Api";
 
 
-const initialPacientes = {
+const initialPaciente = {
     pacientes: []
 }
 
 const PacientesList =() => {
-    const[pacientes,setPacientes] = useState(initialPacientes)
+    const[pacientes,setPacientes] = useState(initialPaciente)
 
     useEffect(() => {
         const obtenerListaPacientes = async () => {
@@ -31,7 +31,7 @@ const PacientesList =() => {
                 <img src='/images/logoNombre.png' alt='' width="100%" />
             </div>
             <hr/>
-            <p className="tituloPacientList">Turnos asignados</p>
+            <p className="tituloPacientList">Listado de pacientes</p>
             <body className="bodyPacientList">
             <table className="tablaPacientContainer2">
                     <tr>
