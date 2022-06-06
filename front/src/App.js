@@ -5,6 +5,7 @@ import Home from './Home.js';
 import AgregarPaciente from './AgregarPaciente.js';
 import BuscarPaciente from "./BuscarPaciente";
 import Turnos from "./Turnos";
+import ListadoPaciente from "./PacientesList";
 
 function App (){
 
@@ -12,10 +13,11 @@ function App (){
     <BrowserRouter>
      <Routes>
         <Route path='/login'            element={<Login/>}/>
-        <Route path='/agregarPaciente' element={<AgregarPaciente/>}/>
-        <Route path='/home'            element={<Home/>}/>
-        <Route path='/buscarPaciente' element={<BuscarPaciente />} />
-        <Route path='/turnosAsignados' element={<Turnos/>} />
+        <Route path='/agregarPaciente'  element={<AgregarPaciente/>}/>
+        <Route path='/home'             element={<Home/>}/>
+        <Route path='/buscarPaciente'   element={<BuscarPaciente />} />
+        <Route path='/listadoPacientes' element={<ListadoPaciente/>} />
+        <Route path='/turnosAsignados'  element={<Turnos/>} />
         <Route path="*" element={<Login/>}/>
      </Routes>
     </BrowserRouter>

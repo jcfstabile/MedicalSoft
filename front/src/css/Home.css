@@ -15,16 +15,17 @@
 
 .contenedor {
     color:white;
-    background: linear-gradient(-360deg, #be1531, #a71930, #a71930, #a71930);
-    background-size: 100%; 
+    background-color:#a71930 !important;
+    background-size: 100%;
+    background-image: url("/public/images/linitas.png"); 
     height: 100vh;
     width: 100vw;
-    background-position:auto;
 }
 
 .nav {
     background-color: rgba(0,0,0,.2);
     width:100%;
+    height:60px;
     display: flex;
     flex-direction: raw;
     align-items: center;
@@ -51,27 +52,36 @@
 }
 
 .nav-boton span {
-    display: inline-block;
+    display:list-item;
     transition: .4s ease all;
 }
 
-.nav-boton:hover {
-    background-color: white;
-    border-radius: 15px 15px 0px 0px;
+.nav-boton p:hover {
+    background-color: white !important;
+    border-radius: 15px 15px 0px 0px !important;
 }
 
 .nav-boton:hover span {
-    color: #a71930;
+    transition: .4s ease all;
+    color:#a71930;
+    background-color: white !important;
+    border-radius: 15px 15px 0px 0px !important;
+    padding-top: 8px;
+    padding-left:8px;
+    margin-left: -8px;
+    width:120px;
+    height:39px ;
 }
 
 .submenu {
+    transition: .4s ease all;
     display: none;
     position: absolute;
     min-height: 30vh;
     min-width: 30vh;
-    background-color: white;
+    background-color:white;
     border-radius: 0px 15px 15px 15px;
-    transform: translate(-10px, 10px);
+    transform: translate(-8px, 0px);
     overflow: hidden;
 }
 
@@ -88,6 +98,8 @@
 }
 
 .nav-boton:hover .submenu {
+    transition: .4s ease all;
+    
     display: block;
 }
 
@@ -100,7 +112,8 @@
     align-items: center;
 }
 
-.imagenLogo img {
-    width: 70%;
-    height: 50%;
+.homeBodyLogo{
+    position: absolute;
+    width: 80%;
+    height: 43%;
 }

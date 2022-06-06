@@ -27,6 +27,14 @@ function buscarPaciente(dniSearch) {
         .catch(netError)
 }
 
+function buscarPacientes(){
+    const url = host.concat('/api/pacientes')
+    return axios
+        .get(url)
+        .then(response =>response.data)
+        .catch(netError)
+}
+
 function buscarTurnos(){
     const url = host.concat('/api/turnos')
     return axios
@@ -56,6 +64,7 @@ export default{
     agregarPaciente,
     login,
     buscarPaciente,
+    buscarPacientes,
     buscarTurnos,
     buscarTurnosAsignados,
     asignarTurno,

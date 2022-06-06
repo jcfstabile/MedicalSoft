@@ -11,6 +11,7 @@ const Home = (props) => {
                     <div className="submenu">
                         <Link to='/agregarPaciente'>Agregar paciente</Link>
                         <Link to='/buscarPaciente'>Buscar paciente</Link>
+                        <Link to='/listadoPacientes'>Listado de Pacientes </Link>
                     </div>
                 </div>
                 <div className='nav-boton'>
@@ -21,7 +22,7 @@ const Home = (props) => {
                 </div>
             </div>
             <div className='imagenLogo'>
-                <img src='/images/logoNombre.png' alt='' width="100%" />
+                <img className="homeBodyLogo" src='/images/logoNombre.png' alt='' width="100%" />
             </div>
         </div>
     );
