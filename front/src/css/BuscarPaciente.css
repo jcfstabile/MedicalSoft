@@ -2,7 +2,7 @@
 
 
 .containerBuscarPac{
-    overflow:hidden;
+    overflow: auto;
     color: white;
     background: rgb(18,17,20);
     background: linear-gradient(90deg, rgba(18,17,20,1) 0%, rgba(167,25,48,1) 14%);
