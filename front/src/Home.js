@@ -5,10 +5,8 @@ const Home = (props) => {
     return (
         <div className='contenedor'>
             <div className='nav'>
-                <p>MedicalSoft</p>
-                <img src='/images/electro.png' alt='' width="100%" />
+                <img className="navlogo" src='/images/logoNombre.png' alt='' width="100%" />
                 <div className='nav-boton'>
-                    
                     <span>Pacientes</span>
                     <div className="submenu">
                         <Link to='/agregarPaciente'>Agregar paciente</Link>
@@ -23,7 +21,7 @@ const Home = (props) => {
                 </div>
             </div>
             <div className='imagenLogo'>
-                <img src='/images/logoLogin.png' alt='' width="100%" />
+                <img src='/images/logoNombre.png' alt='' width="100%" />
             </div>
         </div>
     );
