@@ -15,12 +15,14 @@
 .flecha {
     height: 50px;
     width: 200px;
-    margin-left: 20px;
-    margin-right: 40px;
+    margin-top: 10px;
+    margin-left: 5px !important;
+    margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 
 .flecha a {
     color: white;
@@ -80,8 +82,10 @@ hr {
 }
 
 .logoheaderImagen img {
-    width: 100%;
-    height: 100%;
+    padding:10px !important;
+    width: 220px;
+    margin-bottom: 0px;
+    margin-left: -29px;
 }
 
 .titulo {
